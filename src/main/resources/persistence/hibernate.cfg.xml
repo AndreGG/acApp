@@ -18,6 +18,6 @@
 
         <property name="hibernate.show_sql">true</property>
 
-        <mapping resource="persistence/mappings/mapping.hbm.xml"/>
+        <mapping resource="persistence/mapping/mapping.hbm.xml"/>
 
     </session-factory>
