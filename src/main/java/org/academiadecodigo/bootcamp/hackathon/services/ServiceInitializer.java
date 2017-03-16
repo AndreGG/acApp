@@ -19,7 +19,7 @@ public class ServiceInitializer {
         CadetDao cadetDAO = ;
         BootcampDao bootcampDAO = ;
         SummarizerDao summarizerDao = ;
-        
+
 
         ServiceRegistry.getInstance().registerService(userService);
 
