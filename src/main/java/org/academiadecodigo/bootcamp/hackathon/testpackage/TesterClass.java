@@ -1,4 +1,4 @@
-package org.academiadecodigo.bootcamp.hackathon;
+package org.academiadecodigo.bootcamp.hackathon.testpackage;
 
 import org.academiadecodigo.bootcamp.hackathon.RNG.RNG;
 
