@@ -1,0 +1,37 @@
+.root {
+    -fx-background-color: #222222;
+}
+
+#label-error {
+    -fx-text-fill: #ff0009;
+}
+
+.label {
+    -fx-text-fill: #FFFFFF;
+}
+
+.text-field {
+    -fx-background-color: #464545;
+    -fx-text-fill: #FFFFFF;
+}
+
+.text-field:focused {
+    -fx-border-color: #737272;
+}
+
+.button {
+    -fx-border-radius: 0;
+    -fx-background-color: #E31D1A;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+    -fx-pref-width: 120;
+    -fx-pref-height: 40;
+}
+
+.button-custom {
+    -fx-background-color: #737272;
+}
+
+.button:pressed {
+    -fx-background-color: #A61412;
+}
