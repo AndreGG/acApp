@@ -9,7 +9,7 @@
         <property name="name" column="name" type="string"/>
         <property name="availableToSummerize" type="boolean"/>
         <property name="currentSeat" type="int"/>
-        <many-to-one class="org.academiadecodigo.bootcamp.hackathon.model.Bootcamp" name="numberOfBootcamp" column="bootcamp_id"
+        <many-to-one class="org.academiadecodigo.bootcamp.hackathon.model.Bootcamp" name="getBootcamp" column="bootcamp_id"
                      not-null="true" cascade="all"/>
 
     </class>

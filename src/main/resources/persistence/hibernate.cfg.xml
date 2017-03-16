@@ -5,7 +5,7 @@
 <hibernate-configuration>
     <session-factory>
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3306/users_db</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/ac_platform</property>
         <property name="connection.username">root</property>
 
         <property name="connection.pool_size">1</property>
@@ -21,3 +21,4 @@
         <mapping resource="persistence/mapping/mapping.hbm.xml"/>
 
     </session-factory>
+</hibernate-configuration>

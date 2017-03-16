@@ -29,6 +29,9 @@ public abstract class SeatingAssignmentService {
 
     }
 
+    private List<Cadet> bootcampDao() {
+    }
+
     public Cadet assignSeat(int seatNumber) {
 
         if(isRigged(seatNumber)) {

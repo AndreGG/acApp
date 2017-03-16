@@ -9,6 +9,5 @@ import java.util.List;
  */
 public interface CadetDao extends Dao<Cadet> {
 
-    List<Cadet> findByBootcamp(int bootcampNumber);
 
 }

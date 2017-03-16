@@ -14,15 +14,15 @@ import org.hibernate.service.ServiceRegistry;
  */
 public class HibernateSessionManager implements DBConnectionManager, TransactionManager {
 
-    private SessionFactory sessionFactory;
+    private static SessionFactory sessionFactory;
 
-    public HibernateSessionManager() {
+    static  {
         // hibernate initialization code
         try {
 
             // Hold services needed by Hibernate
             ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
-                    .configure("hibernate.cfg.xml") // Load settings from hibernate.cfg.xml
+                    .configure("persistence/hibernate.cfg.xml") // Load settings from hibernate.cfg.xml
                     .build();
 
             sessionFactory = new MetadataSources(serviceRegistry)

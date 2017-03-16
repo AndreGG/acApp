@@ -22,18 +22,18 @@ public class HibernateCadetDao extends HibernateDao<Cadet> implements CadetDao {
         super(hibernateSessionManager, Cadet.class);
     }
 
-    public List<Cadet> findByBootcamp(int bootcampNumber) {
-        try {
-
-            Session session = hibernateSessionManager.getSession();
-            Query q = session.createQuery("from Cadet where bootcampNumber = :bootcampNumber");
-            q.setString("bootcampNumber", String.valueOf(bootcampNumber));
-            List<Cadet> cadets = q.list();
-
-            return cadets;
-
-        } catch (HibernateException hex) {
-            throw new TransactionException(hex);
-        }
-    }
+//    public List<Cadet> findByBootcamp(int bootcampNumber) {
+//        try {
+//
+//            Session session = hibernateSessionManager.getSession();
+//            Query q = session.createQuery("from Cadet where bootcampNumber = :bootcampNumber");
+//            q.setString("bootcampNumber", String.valueOf(bootcampNumber));
+//            List<Cadet> cadets = q.list();
+//
+//            return cadets;
+//
+//        } catch (HibernateException hex) {
+//            throw new TransactionException(hex);
+//        }
+//    }
 }
