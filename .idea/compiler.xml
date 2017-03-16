@@ -22,12 +22,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="true" />
-        <module name="acApp" />
         <module name="MegaTeam" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="acApp" target="1.8" />
+      <module name="MegaTeam" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

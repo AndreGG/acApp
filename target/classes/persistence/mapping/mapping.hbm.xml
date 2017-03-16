@@ -1,0 +1,57 @@
+<hibernate-mapping>
+
+    <class name="org.academiadecodigo.bootcamp.hackathon.model.Cadet" table="cadets">
+
+        <id name="id" column="cadet_id">
+            <generator class="identity"/>
+        </id>
+
+        <property name="name" column="name" type="string"/>
+        <property name="availableToSummerize" type="boolean"/>
+        <property name="currentSeat" type="int"/>
+        <many-to-one class="org.academiadecodigo.bootcamp.hackathon.model.Bootcamp" name="numberOfBootcamp" column="bootcamp_id"
+                     not-null="true" cascade="all"/>
+
+    </class>
+
+    <class name="org.academiadecodigo.bootcamp.hackathon.model.Bootcamp" table="bootcamps">
+
+        <id name="id" column="bootcamp_id">
+            <generator class="identity"/>
+        </id>
+
+        <property name="name" column="name" type="string"/>
+        <set name="cadets" cascade="all">
+            <key column="bootcamp_id" not-null="true"/>
+            <one-to-many class="org.academiadecodigo.bootcamp.hackathon.model.Cadet"/>
+        </set>
+
+    </class>
+
+    <class name="org.academiadecodigo.bootcamp.hackathon.model.Summarizer" table="summarizers">
+
+        <id name="id" column="summarizer_id">
+            <generator class="identity"/>
+        </id>
+
+        <property name="date" column="date" type="date"/>
+        <property name="summarizerNumber" column="nr" type="int"/>
+        <many-to-one class="org.academiadecodigo.bootcamp.hackathon.model.Cadet" name="cadetAssigned" column="cadet_id"
+                     not-null="true" cascade="all"/>
+
+    </class>
+
+    <class name="org.academiadecodigo.bootcamp.hackathon.model.Homework" table="homeworks">
+
+        <id name="id" column="homework_id">
+            <generator class="identity"/>
+        </id>
+
+        <property name="date" column="date" type="date"/>
+        <property name="subject" column="subject" type="string"/>
+        <many-to-one class="org.academiadecodigo.bootcamp.hackathon.model.Cadet" name="cadetAssigned"
+                     not-null="true" cascade="all"/>
+
+    </class>
+
+</hibernate-mapping>
