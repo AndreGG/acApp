@@ -1,8 +1,6 @@
 package org.academiadecodigo.bootcamp.hackathon.services;
 
-import org.academiadecodigo.bootcamp.hackathon.model.dao.BootcampDao;
-import org.academiadecodigo.bootcamp.hackathon.model.dao.CadetDao;
-import org.academiadecodigo.bootcamp.hackathon.model.dao.SummarizerDao;
+import org.academiadecodigo.bootcamp.hackathon.model.dao.*;
 import org.academiadecodigo.bootcamp.hackathon.persistence.DBConnectionManager;
 import org.academiadecodigo.bootcamp.hackathon.persistence.hibernate.HibernateSessionManager;
 
@@ -16,10 +14,10 @@ public class ServiceInitializer {
     public void init() {
 
         HibernateSessionManager hibernateManager = new HibernateSessionManager();
-        CadetDao cadetDAO = ;
-        BootcampDao bootcampDAO = ;
-        SummarizerDao summarizerDao = ;
-        
+        CadetDao cadetDAO = new HibernateCadetDao();
+        BootcampDao bootcampDAO = new HibernateBootcampDao();
+        SummarizerDao summarizerDao = new HibernateSummarizerDao();
+
         ServiceRegistry.getInstance().registerService();
 
         this.dbConnectionManager = hibernateManager;
