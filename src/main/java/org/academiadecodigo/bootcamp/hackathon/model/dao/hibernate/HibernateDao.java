@@ -16,17 +16,15 @@ import java.util.List;
 public abstract class HibernateDao<E> implements Dao<E> {
 
     private Class<E> eClass;
-    private HibernateSessionManager hibernateSessionManager;
 
-    public HibernateDao(HibernateSessionManager hibernateSessionManager, Class eClass) {
-        this.hibernateSessionManager = hibernateSessionManager;
+    public HibernateDao(Class eClass) {
         this.eClass = eClass;
     }
 
     public void create(E e) {
         try {
 
-            hibernateSessionManager.getSession().save(e);
+            HibernateSessionManager.getSession().save(e);
 
         } catch (HibernateException hex) {
             throw new TransactionException(hex);
@@ -37,7 +35,7 @@ public abstract class HibernateDao<E> implements Dao<E> {
     public void update(E e) {
         try {
 
-            hibernateSessionManager.getSession().saveOrUpdate(e);
+            HibernateSessionManager.getSession().saveOrUpdate(e);
 
         } catch (HibernateException hex) {
             throw new TransactionException(hex);
@@ -48,7 +46,7 @@ public abstract class HibernateDao<E> implements Dao<E> {
     public void delete(E e) {
         try {
 
-            hibernateSessionManager.getSession().delete(e);
+            HibernateSessionManager.getSession().delete(e);
 
         } catch (HibernateException hex) {
             throw new TransactionException(hex);
@@ -59,7 +57,7 @@ public abstract class HibernateDao<E> implements Dao<E> {
     public E findById(int id) {
         try {
 
-            Session session = hibernateSessionManager.getSession();
+            Session session = HibernateSessionManager.getSession();
             Query q = session.createQuery("from " + eClass.getSimpleName() + " where id = :id");
             q.setString("id", String.valueOf(id));
             E e = (E) q.uniqueResult();
@@ -75,7 +73,7 @@ public abstract class HibernateDao<E> implements Dao<E> {
     public List<E> findAll() {
         try {
 
-            Session session = hibernateSessionManager.getSession();
+            Session session = HibernateSessionManager.getSession();
             Query q = session.createQuery("from " + eClass.getSimpleName());
             List<E> e = q.list();
 
@@ -90,7 +88,7 @@ public abstract class HibernateDao<E> implements Dao<E> {
     public long count() {
         try {
 
-            Session session = hibernateSessionManager.getSession();
+            Session session = HibernateSessionManager.getSession();
             long count = (long) session.createCriteria(eClass.getSimpleName())
                     .setProjection(Projections.rowCount())
                     .uniqueResult();
