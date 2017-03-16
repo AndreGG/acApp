@@ -1,0 +1,36 @@
+<hibernate-mapping>
+
+    <class name="org.academiadecodigo.bootcamp.hackathon.model.Cadet" table="cadets">
+
+        <id name="id" column="cadet_id">
+            <generator class="identity"/>
+        </id>
+        <property name="name" column="name" type="string"/>
+        <property name="availableToSummerize" type="boolean"/>
+        <property name="currentSeat" type="int"/>
+        <many-to-one class="org.academiadecodigo.bootcamp.hackathon.model.Bootcamp" name="numberOfBootcamp" column="bootcamp_id"/>
+
+    </class>
+
+    <class name="org.academiadecodigo.bootcamp.hackathon.model.Bootcamp" table="bootcamps">
+
+        <id name="id" column="bootcamp_id">
+            <generator class="identity"/>
+        </id>
+        <property name="name" column="name" type="string"/>
+
+    </class>
+
+    <class name="org.academiadecodigo.bootcamp.hackathon.model.Summarizer" table="summarizers">
+
+        <id name="id" column="summarizer_id">
+            <generator class="identity"/>
+        </id>
+
+        <property name="name" column="name" type="string"/>
+        <property name=""
+
+
+    </class>
+
+</hibernate-mapping>

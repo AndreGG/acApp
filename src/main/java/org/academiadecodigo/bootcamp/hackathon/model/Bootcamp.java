@@ -7,6 +7,7 @@ public class Bootcamp {
 
     private int id;
     private String name;
+    p
 
     public int getId() {
         return id;
