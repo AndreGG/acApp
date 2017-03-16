@@ -9,8 +9,8 @@ import org.academiadecodigo.bootcamp.hackathon.persistence.hibernate.HibernateSe
  */
 public class HibernateBootcampDao extends HibernateDao<Bootcamp> implements BootcampDao {
 
-    public HibernateBootcampDao(HibernateSessionManager hibernateSessionManager) {
-        super(hibernateSessionManager, Bootcamp.class);
+    public HibernateBootcampDao() {
+        super(Bootcamp.class);
     }
 
 

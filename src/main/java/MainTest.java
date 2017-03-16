@@ -47,9 +47,9 @@ public class MainTest {
         summarizer1.setSummarizerNumber(2);
 
 
-        HibernateBootcampDao bootcampDao = new HibernateBootcampDao(hibernate);
-        HibernateCadetDao cadetDao = new HibernateCadetDao(hibernate);
-        HibernateSummarizerDao summarizerDao = new HibernateSummarizerDao(hibernate);
+        HibernateBootcampDao bootcampDao = new HibernateBootcampDao();
+        HibernateCadetDao cadetDao = new HibernateCadetDao();
+        HibernateSummarizerDao summarizerDao = new HibernateSummarizerDao();
 
         hibernate.beginTransaction();
 

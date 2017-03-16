@@ -16,24 +16,26 @@ import java.util.List;
  */
 public class HibernateCadetDao extends HibernateDao<Cadet> implements CadetDao {
 
-    private HibernateSessionManager hibernateSessionManager;
 
-    public HibernateCadetDao(HibernateSessionManager hibernateSessionManager) {
-        super(hibernateSessionManager, Cadet.class);
+
+    public HibernateCadetDao() {
+        super(Cadet.class);
     }
 
-//    public List<Cadet> findByBootcamp(int bootcampNumber) {
-//        try {
-//
-//            Session session = hibernateSessionManager.getSession();
-//            Query q = session.createQuery("from Cadet where bootcampNumber = :bootcampNumber");
-//            q.setString("bootcampNumber", String.valueOf(bootcampNumber));
-//            List<Cadet> cadets = q.list();
-//
-//            return cadets;
-//
-//        } catch (HibernateException hex) {
-//            throw new TransactionException(hex);
-//        }
-//    }
+
+    @Override
+    public Cadet findByName(String cadetName) {
+        try {
+
+            Session session = HibernateSessionManager.getSession();
+            Query q = session.createQuery("from Cadet where name = :cadetName");
+            q.setString("cadetName", cadetName);
+            Cadet cadet = (Cadet) q.uniqueResult();
+
+            return cadet;
+
+        } catch (HibernateException hex) {
+            throw new TransactionException(hex);
+        }
+    }
 }
