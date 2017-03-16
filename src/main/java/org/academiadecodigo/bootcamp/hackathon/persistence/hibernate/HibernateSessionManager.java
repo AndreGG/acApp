@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp.hackathon.persistence.hibernate;
 
 import org.academiadecodigo.bootcamp.hackathon.persistence.DBConnectionManager;
+import org.academiadecodigo.bootcamp.hackathon.persistence.TransactionManager;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,7 +12,7 @@ import org.hibernate.service.ServiceRegistry;
 /**
  * Created by codecadet on 3/16/17.
  */
-public class HibernateSessionManager implements DBConnectionManager {
+public class HibernateSessionManager implements DBConnectionManager, TransactionManager {
 
     private SessionFactory sessionFactory;
 
