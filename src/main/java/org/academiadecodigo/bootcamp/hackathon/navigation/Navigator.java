@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * Created by codecadet on 3/16/17.
  */
-public class Navigator {
+public final class Navigator {
 
     private static final String VIEW_PATH = "/view";
     private static Navigator instance = null;
