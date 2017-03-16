@@ -24,12 +24,8 @@ public abstract class SeatingAssignmentService {
 
         this.cadetDao = cadetDao;
         this.bootcampDao = bootcamp;
-        this.cadets = bootcampDao.getCadets();
+        this.cadets = bootcampDao();
         seatsByRow = SettingsFileHandler.getSeatsByRow();
-
-        for(Cadet cadet: cadets) {
-            currentSeatAssignment.put(cadet.getName(), cadet.getCurrentSeat());
-        }
 
     }
 
@@ -77,6 +73,9 @@ public abstract class SeatingAssignmentService {
     public boolean isRigged(int seatNumber) {
 
         boolean rigged = false;
+
+
+
 
         return rigged;
     }

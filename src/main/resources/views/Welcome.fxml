@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@../styles.css" type="AnchorPane" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.academiadecodigo.bootcamp.hackathon.controller.welcomeController">
+   <children>
+      <MenuBar id="menu" opacity="0.38" prefHeight="29.0" prefWidth="600.0" style="-fx-background-color: FFFFF;" styleClass="menu" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <menus>
+          <Menu id="submenu" mnemonicParsing="false" style="-fx-background-color: FFFFF;" styleClass="submenu" text="Mode">
+            <items>
+                  <MenuItem id="menu" fx:id="modeSummarizer" mnemonicParsing="false" onAction="#goToSummarizerView" style="-fx-background-color: FFFFF;" styleClass="menu" text="Summarizer" />
+              <MenuItem id="menu" fx:id="modeSeating" mnemonicParsing="false" onAction="#goToSeatingView" style="-fx-background-color: FFFFF;" styleClass="menu" text="Seating" />
+                  <MenuItem id="menu" fx:id="modeClose" mnemonicParsing="false" onAction="#closeApp" style="-fx-background-color: FFFFF;" styleClass="menu" text="Close" />
+            </items>
+          </Menu>
+          <Menu id="submenu" mnemonicParsing="false" style="-fx-background-color: FFFFF;" styleClass="submenu" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <ImageView fitHeight="69.0" fitWidth="200.0" layoutX="200.0" layoutY="131.0">
+         <image>
+            <Image url="@../logo.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="summarizerLabel" layoutX="266.0" layoutY="243.0" onMouseClicked="#goToSummarizerView" prefHeight="29.0" prefWidth="74.0" text="Summarizer" />
+      <Label fx:id="seatingLabel" layoutX="266.0" layoutY="290.0" onMouseClicked="#goToSeatingView" prefHeight="29.0" prefWidth="74.0" text="Seating" />
+   </children>
+</fx:root>

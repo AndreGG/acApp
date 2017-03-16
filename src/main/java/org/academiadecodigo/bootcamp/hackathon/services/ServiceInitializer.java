@@ -1,6 +1,9 @@
 package org.academiadecodigo.bootcamp.hackathon.services;
 
 import org.academiadecodigo.bootcamp.hackathon.model.dao.*;
+import org.academiadecodigo.bootcamp.hackathon.model.dao.hibernate.HibernateBootcampDao;
+import org.academiadecodigo.bootcamp.hackathon.model.dao.hibernate.HibernateCadetDao;
+import org.academiadecodigo.bootcamp.hackathon.model.dao.hibernate.HibernateSummarizerDao;
 import org.academiadecodigo.bootcamp.hackathon.persistence.DBConnectionManager;
 import org.academiadecodigo.bootcamp.hackathon.persistence.hibernate.HibernateSessionManager;
 
