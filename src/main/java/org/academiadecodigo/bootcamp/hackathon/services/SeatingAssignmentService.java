@@ -17,15 +17,14 @@ public abstract class SeatingAssignmentService {
     private CadetDao cadetDao;
     private BootcampDao bootcampDao;
     private List<Cadet> cadets;
-    private HashMap<String, Integer> riggedSeats;
+    private HashMap<Integer, String> riggedSeats;
     private int seatsByRow;
 
     public SeatingAssignmentService(CadetDao cadetDao, BootcampDao bootcamp) {
 
         this.cadetDao = cadetDao;
         this.bootcampDao = bootcamp;
-        this.cadets = bootcampDao();
-        seatsByRow = SettingsFileHandler.getSeatsByRow();
+        //this.cadets = bootcampDao.getCadets();
 
     }
 
@@ -34,19 +33,18 @@ public abstract class SeatingAssignmentService {
 
     public Cadet assignSeat(int seatNumber) {
 
+        Cadet assignedCadet = null;
+
         if(isRigged(seatNumber)) {
 
-            String name = SettingsFileHandler.getCadetName();
-            Cadet riggedCadet = cadetDao.findByName(name);
-            riggedCadet.setCurrentSeat(seatNumber);
-
-            cadets.remove(riggedCadet);
-            return riggedCadet;
+            /*String cadetName = riggedSeats.get(seatNumber);
+            Cadet assignedCadet = cadetDao.findByName(cadetName);
+            riggedCadet.setCurrentSeat(seatNumber);*/
 
         } else {
 
             int highestRoll = 0;
-            Cadet assignedCadet = null;
+            assignedCadet = null;
 
             for(Cadet cadet: cadets) {
 
@@ -63,10 +61,13 @@ public abstract class SeatingAssignmentService {
                 }
 
             }
-
-            cadets.remove(assignedCadet);
-            return assignedCadet;
         }
+
+        if(assignedCadet != null) {
+            cadets.remove(assignedCadet);
+        }
+
+        return assignedCadet;
     }
 
     public int getCadetRow(double cadetSeat) {
@@ -75,10 +76,7 @@ public abstract class SeatingAssignmentService {
 
     public boolean isRigged(int seatNumber) {
 
-        boolean rigged = false;
-
-
-
+        boolean rigged = riggedSeats.containsKey(seatNumber);
 
         return rigged;
     }
