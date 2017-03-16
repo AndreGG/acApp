@@ -9,7 +9,7 @@ public class Summarizer {
 
     private int id;
     private Date date;
-    private int summerizerNumber;
+    private int summarizerNumber;
     private Cadet cadetAssigned;
 
     public int getId() {
@@ -28,12 +28,12 @@ public class Summarizer {
         this.date = date;
     }
 
-    public int getSummerizerNumber() {
-        return summerizerNumber;
+    public int getSummarizerNumber() {
+        return summarizerNumber;
     }
 
-    public void setSummerizerNumber(int summerizerNumber) {
-        this.summerizerNumber = summerizerNumber;
+    public void setSummarizerNumber(int summarizerNumber) {
+        this.summarizerNumber = summarizerNumber;
     }
 
     public Cadet getCadetAssigned() {
