@@ -7,6 +7,9 @@ import org.academiadecodigo.bootcamp.hackathon.model.dao.hibernate.HibernateSumm
 import org.academiadecodigo.bootcamp.hackathon.persistence.hibernate.HibernateSessionManager;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.concurrent.ConcurrentSkipListSet;
 
 /**
  * Created by codecadet on 3/16/17.
@@ -26,12 +29,17 @@ public class MainTest {
         cadet1.setAvailableToSummerize(true);
         cadet1.setCurrentSeat(0);
 
-
         Cadet cadet2 = new Cadet();
         cadet2.setName("Joao");
         cadet2.setAvailableToSummerize(true);
         cadet2.setCurrentSeat(0);
 
+        Set<Cadet> cadets = new HashSet<>();
+
+        cadets.add(cadet1);
+        cadets.add(cadet2);
+
+        bootcamp.setCadets(cadets);
 
         Summarizer summarizer1 = new Summarizer();
         summarizer1.setCadetAssigned(cadet1);
