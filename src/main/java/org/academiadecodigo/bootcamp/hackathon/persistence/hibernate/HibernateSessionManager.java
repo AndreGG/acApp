@@ -16,7 +16,7 @@ public class HibernateSessionManager implements DBConnectionManager, Transaction
 
     private static SessionFactory sessionFactory;
 
-    static  {
+    public HibernateSessionManager() {
         // hibernate initialization code
         try {
 

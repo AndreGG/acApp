@@ -9,5 +9,6 @@ import java.util.List;
  */
 public interface CadetDao extends Dao<Cadet> {
 
+    Cadet findByName(String cadetName);
 
 }

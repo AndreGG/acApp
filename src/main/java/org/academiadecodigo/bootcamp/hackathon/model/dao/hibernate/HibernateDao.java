@@ -87,8 +87,19 @@ public abstract class HibernateDao<E> implements Dao<E> {
     }
 
 
-    public long count() { //TODO:
-        return -1;
+    public long count() {
+        try {
+
+            Session session = hibernateSessionManager.getSession();
+            long count = (long) session.createCriteria(eClass.getSimpleName())
+                    .setProjection(Projections.rowCount())
+                    .uniqueResult();
+
+            return count;
+
+        } catch (HibernateException hex) {
+            throw new TransactionException(hex);
+        }
     }
 
 }
