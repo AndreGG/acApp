@@ -1,5 +1,7 @@
 package org.academiadecodigo.bootcamp.hackathon.model;
 
+import java.util.Set;
+
 /**
  * Created by codecadet on 3/16/17.
  */
@@ -7,6 +9,7 @@ public class Bootcamp {
 
     private int id;
     private String name;
+    private Set<Cadet> cadets;
 
     public int getId() {
         return id;
@@ -22,5 +25,13 @@ public class Bootcamp {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Cadet> getCadets() {
+        return cadets;
+    }
+
+    public void setCadets(Set<Cadet> cadets) {
+        this.cadets = cadets;
     }
 }
