@@ -7,8 +7,8 @@
         </id>
 
         <property name="name" column="name" type="string"/>
-        <set name="cadets" cascade="all" inverse="true">
-            <key column="bootcamp_id" not-null="true"/>
+        <set name="cadets" cascade="all" inverse="false" lazy="false">
+            <key column="bootcamp_id" not-null="false"/>
             <one-to-many class="org.academiadecodigo.bootcamp.hackathon.model.Cadet"/>
         </set>
 
@@ -23,8 +23,8 @@
         <property name="name" column="name" type="string"/>
         <property name="availableToSummerize" type="boolean"/>
         <property name="currentSeat" type="int"/>
-        <many-to-one class="org.academiadecodigo.bootcamp.hackathon.model.Bootcamp" name="getBootcamp" column="bootcamp_id"
-                     not-null="true" cascade="all"/>
+        <many-to-one class="org.academiadecodigo.bootcamp.hackathon.model.Bootcamp" name="bootcamp" column="bootcamp_id"
+                     not-null="false" cascade="all"/>
 
     </class>
 

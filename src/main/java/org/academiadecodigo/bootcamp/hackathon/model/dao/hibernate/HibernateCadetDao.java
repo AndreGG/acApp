@@ -38,4 +38,6 @@ public class HibernateCadetDao extends HibernateDao<Cadet> implements CadetDao {
             throw new TransactionException(hex);
         }
     }
+
+
 }

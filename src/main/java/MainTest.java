@@ -55,11 +55,20 @@ public class MainTest {
 
         bootcampDao.create(bootcamp);
 
-        cadetDao.create(cadet1);
-        cadetDao.create(cadet2);
+        //cadetDao.create(cadet1);
+        //cadetDao.create(cadet2);
 
         summarizerDao.create(summarizer1);
 
         hibernate.commitTransaction();
+
+        hibernate.beginTransaction();
+
+        System.out.println(cadetDao.findByName(cadet1.getName()).getBootcamp().getName());
+
+        hibernate.commitTransaction();
+
+        System.out.println(cadet1.getBootcamp());
+
     }
 }
