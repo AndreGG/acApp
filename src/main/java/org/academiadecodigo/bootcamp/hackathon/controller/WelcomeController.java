@@ -48,9 +48,12 @@ public class WelcomeController implements Controller{
 
     @FXML
     void showSeating(MouseEvent event) {
-
         Navigator.getInstance().loadScreen("seating");
+    }
 
+    @FXML
+    void skipToSeating(ActionEvent event) {
+        Navigator.getInstance().loadScreen("seating");
     }
 
     @FXML
@@ -69,11 +72,7 @@ public class WelcomeController implements Controller{
         Navigator.getInstance().loadScreen("summarizer_dum");
     }
 
-    @FXML
-    void skipToSeating(ActionEvent event) {
 
-        Navigator.getInstance().loadScreen("seating");
-    }
 
     @Override
     public void initialize() {
@@ -87,6 +86,10 @@ public class WelcomeController implements Controller{
 
     @Override
     public void setServices() {
+
+    }
+
+    public void manageAssets() {
 
     }
 }

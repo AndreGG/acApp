@@ -1,33 +1,21 @@
 package org.academiadecodigo.bootcamp.hackathon.testpackage;
 
-import javafx.application.Application;
-import javafx.stage.Stage;
 import org.academiadecodigo.bootcamp.hackathon.model.Bootcamp;
 import org.academiadecodigo.bootcamp.hackathon.model.Cadet;
-import org.academiadecodigo.bootcamp.hackathon.model.Summarizer;
+import org.academiadecodigo.bootcamp.hackathon.model.dao.BootcampDao;
 import org.academiadecodigo.bootcamp.hackathon.model.dao.hibernate.HibernateBootcampDao;
-import org.academiadecodigo.bootcamp.hackathon.model.dao.hibernate.HibernateCadetDao;
-import org.academiadecodigo.bootcamp.hackathon.model.dao.hibernate.HibernateSummarizerDao;
-import org.academiadecodigo.bootcamp.hackathon.navigation.Navigator;
-import org.academiadecodigo.bootcamp.hackathon.persistence.TransactionManager;
-import org.academiadecodigo.bootcamp.hackathon.persistence.hibernate.HibernateTransactionManager;
-import org.academiadecodigo.bootcamp.hackathon.services.SeatTestService;
-import org.academiadecodigo.bootcamp.hackathon.services.ServiceInitializer;
-import org.academiadecodigo.bootcamp.hackathon.services.ServiceRegistry;
+import org.academiadecodigo.bootcamp.hackathon.persistence.hibernate.HibernateSessionManager;
 
-import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-
 /**
- * Created by codecadet on 3/16/17.
+ * Created by codecadet on 3/17/17.
  */
-public class mainTest extends Application{
+public class SQLLoader {
 
-    @Override
-    public void init() {
+    public SQLLoader() {
 
         Bootcamp bootcamp = new Bootcamp();
         bootcamp.setName("Javangers");
@@ -104,55 +92,20 @@ public class mainTest extends Application{
 
         Set<Cadet> cadets = new HashSet<>();
 
-        for(Cadet cadet: cadetList) {
+        for (Cadet cadet : cadetList) {
             cadets.add(cadet);
         }
 
         bootcamp.setCadets(cadets);
 
-        Summarizer summarizer1 = new Summarizer();
-        summarizer1.setCadetAssigned(cadet1);
-        summarizer1.setDate(new Date(2017, 3, 15));
-        summarizer1.setSummarizerNumber(2);
+        BootcampDao bootcampDao = new HibernateBootcampDao();
 
-
-        HibernateBootcampDao bootcampDao = new HibernateBootcampDao();
-        HibernateCadetDao cadetDao = new HibernateCadetDao();
-        HibernateSummarizerDao summarizerDao = new HibernateSummarizerDao();
-        TransactionManager transactionManager = new HibernateTransactionManager();
-
-        transactionManager.beginTransaction();
+        HibernateSessionManager.beginTransaction();
 
         bootcampDao.create(bootcamp);
 
-        transactionManager.commitTransaction();
+        HibernateSessionManager.commitTransaction();
 
-        ServiceInitializer sInit = new ServiceInitializer();
-        sInit.init();
-        SeatTestService service = new SeatTestService(cadetDao, transactionManager);
-        ServiceRegistry.getInstance().registerService(service);
-
-    }
-
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-
-        Navigator.getInstance().setStage(primaryStage);
-        Navigator.getInstance().loadScreen("seating");
-
-
-    }
-
-    @Override
-    public void stop() {
-
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 
 }
-
-
-

@@ -23,8 +23,6 @@ public class AdminSettingsController implements Controller {
 
     private AdminService adminService;
 
-
-
     @FXML
     private MenuItem summarizer;
 
@@ -403,6 +401,10 @@ public class AdminSettingsController implements Controller {
 
     @Override
     public void setServices() {
+
+    }
+
+    public void manageAssets() {
 
     }
 }

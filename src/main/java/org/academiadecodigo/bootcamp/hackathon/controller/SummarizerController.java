@@ -226,6 +226,10 @@ public class SummarizerController implements Controller {
 
     }
 
+    public void manageAssets() {
+
+    }
+
     public void skipToSummarizer(ActionEvent actionEvent) {
         AudioManager.stopAll();
         Navigator.getInstance().loadScreen("summarizer_dum");
@@ -234,7 +238,7 @@ public class SummarizerController implements Controller {
 
     public void skipToSeating(ActionEvent actionEvent) {
         AudioManager.stopAll();
-        Navigator.getInstance().loadScreen("Seating");
+        Navigator.getInstance().loadScreen("seating");
     }
 
 

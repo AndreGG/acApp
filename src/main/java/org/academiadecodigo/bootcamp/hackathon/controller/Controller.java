@@ -12,4 +12,5 @@ public interface Controller {
     void addEventHandler(Scene scene);
 
     void setServices();
+
 }
