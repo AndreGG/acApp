@@ -4,6 +4,8 @@ import org.academiadecodigo.bootcamp.hackathon.model.Bootcamp;
 import org.academiadecodigo.bootcamp.hackathon.model.Cadet;
 import org.academiadecodigo.bootcamp.hackathon.model.dao.BootcampDao;
 import org.academiadecodigo.bootcamp.hackathon.model.dao.CadetDao;
+import org.academiadecodigo.bootcamp.hackathon.persistence.TransactionException;
+import org.academiadecodigo.bootcamp.hackathon.persistence.TransactionManager;
 
 /**
  * Created by codecadet on 3/16/17.
@@ -11,9 +13,12 @@ import org.academiadecodigo.bootcamp.hackathon.model.dao.CadetDao;
 public class AdminService implements Service {
 
     BootcampDao bootcampDao;
-    CadetDao cadetDao;
+    TransactionManager transactionManager;
 
-    public AdminService() {
+    public AdminService(BootcampDao bootcampDao, TransactionManager transactionManager) {
+
+        this.bootcampDao = bootcampDao;
+        this.transactionManager = transactionManager;
 
     }
 
@@ -23,10 +28,18 @@ public class AdminService implements Service {
     }
 
     public void createBootcamp(Bootcamp bootcamp){
-        bootcampDao.create(bootcamp);
-    }
 
-    public void addCadetsListToBootcamp(Cadet cadet){
+        try {
+            transactionManager.beginTransaction();
+
+            bootcampDao.create(bootcamp);
+
+            transactionManager.commitTransaction();
+        }catch (TransactionException ex){
+
+            transactionManager.rollbackTransaction();
+
+        }
     }
 
 }
