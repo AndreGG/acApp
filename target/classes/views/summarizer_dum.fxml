@@ -2,6 +2,9 @@
 
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -12,7 +15,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="topNode" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="/views/styles.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.academiadecodigo.bootcamp.hackathon.controller.SummarizerController">
+<AnchorPane fx:id="topNode" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.academiadecodigo.bootcamp.hackathon.controller.SummarizerController">
    <children>
       <BorderPane prefHeight="400.0" prefWidth="610.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -20,23 +23,23 @@
                <children>
                   <ImageView fitHeight="69.0" fitWidth="200.0" layoutX="400.0" layoutY="211.0">
                      <image>
-                        <Image url="/logo.png" />
+                        <Image url="@../logo.png" />
                      </image>
                   </ImageView>
                   <Group fx:id="wheelOfFate" layoutX="503.0" layoutY="499.0" onKeyReleased="#spinWheel" rotate="180.0">
                      <children>
-                        <Circle fill="#fafcfb" layoutX="-3.0" layoutY="10.0" opacity="0.0" radius="176.0" stroke="BLACK" strokeType="INSIDE" />
-                        <ImageView fitHeight="293.0" fitWidth="154.0" layoutX="-84.0" layoutY="-138.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="312.0" fitWidth="188.0" layoutX="-99.0" layoutY="-146.0">
                            <image>
-                              <Image url="/dummies.png" />
+                              <Image url="@../dummies.png" />
                            </image>
                         </ImageView>
-                        <Label fx:id="topCadetName" alignment="CENTER" layoutX="-70.0" layoutY="-93.0" text="CodeCadet" textAlignment="CENTER" textOverrun="CLIP">
+                        <Circle fill="#fafcfb" layoutX="-3.0" layoutY="10.0" opacity="0.0" radius="176.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Label fx:id="topCadetName" alignment="CENTER" layoutX="-68.0" layoutY="-96.0" text="CodeCadet" textAlignment="CENTER" textOverrun="CLIP">
                            <font>
                               <Font name="Inconsolata" size="22.0" />
                            </font>
                         </Label>
-                        <Label fx:id="bottomCadetName" alignment="CENTER" layoutX="-68.0" layoutY="83.0" rotate="180.0" text="CodeCadet" textAlignment="CENTER" textOverrun="CLIP">
+                        <Label fx:id="bottomCadetName" alignment="CENTER" layoutX="-60.0" layoutY="87.0" rotate="180.0" text="CodeCadet" textAlignment="CENTER" textOverrun="CLIP">
                            <font>
                               <Font name="Inconsolata" size="22.0" />
                            </font>
@@ -55,12 +58,30 @@
                   </Rectangle>
                   <ImageView fitHeight="700.0" fitWidth="1000.0">
                      <image>
-                        <Image url="@/curtains.png" />
+                        <Image url="@../curtains.png" />
                      </image>
                   </ImageView>
                </children>
             </AnchorPane>
          </center>
+         <top>
+            <MenuBar opacity="0.5" prefHeight="29.0" prefWidth="1001.0" style="-fx-background-color: #222222;" stylesheets="@styles.css" BorderPane.alignment="CENTER">
+               <menus>
+                  <Menu id="Mode" mnemonicParsing="false" text="Mode">
+                     <items>
+                        <MenuItem fx:id="summarizer" mnemonicParsing="false" onAction="#skipToSummarizer" text="Summarizer" />
+                        <MenuItem fx:id="seating" mnemonicParsing="false" onAction="#skipToSeating" text="Seating" />
+                        <MenuItem fx:id="close" mnemonicParsing="false" onAction="#exitProgram" text="Close" />
+                     </items>
+                  </Menu>
+                  <Menu id="Help" mnemonicParsing="false" text="Help">
+                     <items>
+                        <MenuItem fx:id="help" mnemonicParsing="false" onAction="#skipToCredits" text="About" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+         </top>
       </BorderPane>
    </children>
 </AnchorPane>

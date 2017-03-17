@@ -55,12 +55,12 @@ public class WelcomeController implements Controller {
 
     @FXML
     void showSummarizer(ActionEvent event) {
-        Navigator.getInstance().loadScreen("Summarizer");
+        Navigator.getInstance().loadScreen("summarizer_dum");
     }
 
     @FXML
     public void skipToSummarizer(ActionEvent actionEvent) {
-        Navigator.getInstance().loadScreen("Summarizer");
+        Navigator.getInstance().loadScreen("summarizer_dum");
     }
 
     @FXML
