@@ -12,7 +12,6 @@ import org.academiadecodigo.bootcamp.hackathon.persistence.hibernate.HibernateSe
  */
 public class ServiceInitializer {
 
-    private DBConnectionManager dbConnectionManager;
 
     public void init() {
 
@@ -23,11 +22,10 @@ public class ServiceInitializer {
 
         //ServiceRegistry.getInstance().registerService();
 
-        this.dbConnectionManager = hibernateManager;
     }
 
     public void stopServices() {
-        dbConnectionManager.close();
+        
     }
 
 }
