@@ -14,15 +14,9 @@
    <children>
       <BorderPane layoutX="401.0" layoutY="246.0" prefHeight="750.0" prefWidth="1001.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
-<<<<<<< HEAD
             <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@styles.css" BorderPane.alignment="CENTER">
                <children>
                   <ImageView fx:id="logo" layoutX="373.0" layoutY="224.0" onMousePressed="#showAdminSettings" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="224.0">
-=======
-            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <children>
-                  <ImageView fx:id="logo" layoutX="373.0" layoutY="224.0" onMousePressed="#showAdminSettings" pickOnBounds="true" preserveRatio="true">
->>>>>>> 4742001e32327f56c5c3ffe63e4cd26169e29262
                      <image>
                         <Image url="@../logo.png" />
                      </image>
@@ -33,7 +27,6 @@
             </AnchorPane>
          </center>
          <top>
-<<<<<<< HEAD
             <MenuBar opacity="0.5" prefHeight="29.0" prefWidth="1001.0" style="-fx-background-color: #222222;" stylesheets="@styles.css" BorderPane.alignment="CENTER">
               <menus>
                 <Menu id="Mode" mnemonicParsing="false" text="Mode">
@@ -44,18 +37,6 @@
                   </items>
                 </Menu>
                 <Menu id="Help" mnemonicParsing="false" text="Help">
-=======
-            <MenuBar opacity="0.5" prefHeight="29.0" prefWidth="1001.0" style="-fx-background-color: FFFFF;" BorderPane.alignment="CENTER">
-              <menus>
-                <Menu mnemonicParsing="false" text="Mode">
-                  <items>
-                        <MenuItem fx:id="summarizer" mnemonicParsing="false" onAction="#showSummarizer" style="-fx-background-color: FFFFF;" text="Summarizer" />
-                        <MenuItem fx:id="seating" mnemonicParsing="false" onAction="#showSeating" style="-fx-background-color: FFFFF;" text="Seating" />
-                    <MenuItem fx:id="close" mnemonicParsing="false" onAction="#exitProgramm" style="-fx-background-color: FFFFF;" text="Close" />
-                  </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Help">
->>>>>>> 4742001e32327f56c5c3ffe63e4cd26169e29262
                   <items>
                     <MenuItem fx:id="help" mnemonicParsing="false" onAction="#showCredits" text="A/C_" />
                   </items>

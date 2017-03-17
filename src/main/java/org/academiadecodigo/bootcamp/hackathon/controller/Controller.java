@@ -7,6 +7,8 @@ import javafx.scene.Scene;
  */
 public interface Controller {
 
+    void initialize();
+
     void addEventHandler(Scene scene);
 
     void setServices();
