@@ -9,8 +9,6 @@ public class MainControllersTest {
 
     public static void main(String[] args) {
 
-        setRoot()
-
         Navigator.getInstance().loadScreen("Welcome");
     }
 }
