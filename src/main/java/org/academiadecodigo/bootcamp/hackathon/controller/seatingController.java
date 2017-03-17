@@ -9,6 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import org.academiadecodigo.bootcamp.hackathon.model.Cadet;
 import org.academiadecodigo.bootcamp.hackathon.model.dao.hibernate.HibernateCadetDao;
+import org.academiadecodigo.bootcamp.hackathon.navigation.Navigator;
 import org.academiadecodigo.bootcamp.hackathon.services.SeatTestService;
 import org.academiadecodigo.bootcamp.hackathon.services.ServiceRegistry;
 
@@ -31,11 +32,11 @@ public class seatingController implements Controller {
 
     @FXML
     public void initialize() {
-        seatTestService = (SeatTestService) ServiceRegistry.getInstance().getService(SeatTestService.class);
-
-        columnCadets.setCellValueFactory(new PropertyValueFactory<>("name"));
-
-        cadetsList.getItems().setAll(seatTestService.findAll());
+//        seatTestService = (SeatTestService) ServiceRegistry.getInstance().getService(SeatTestService.class);
+//
+//        columnCadets.setCellValueFactory(new PropertyValueFactory<>("name"));
+//
+//        cadetsList.getItems().setAll(seatTestService.findAll());
     }
 
     @Override
@@ -60,6 +61,17 @@ public class seatingController implements Controller {
     }
 
 
+    public void skipToSummarizer(ActionEvent actionEvent) {
+        Navigator.getInstance().loadScreen("Summarizer");
+    }
 
 
+    public void skipToSeating(ActionEvent actionEvent) {
+        Navigator.getInstance().loadScreen("seating");
+    }
+
+
+    public void exitProgram(ActionEvent actionEvent) {
+        System.exit(0);
+    }
 }

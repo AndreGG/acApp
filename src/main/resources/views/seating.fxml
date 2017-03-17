@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.Pane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1001.0"  xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.academiadecodigo.bootcamp.hackathon.controller.seatingController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1001.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.academiadecodigo.bootcamp.hackathon.controller.seatingController">
    <children>
       <BorderPane layoutX="401.0" layoutY="246.0" prefHeight="750.0" prefWidth="1001.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -34,20 +34,20 @@
          </center>
          <top>
             <MenuBar opacity="0.5" prefHeight="29.0" prefWidth="1001.0" style="-fx-background-color: #222222;" stylesheets="@styles.css" BorderPane.alignment="CENTER">
-              <menus>
-                <Menu id="Mode" mnemonicParsing="false" text="Mode">
-                  <items>
-                        <MenuItem mnemonicParsing="false" text="Summarizer" />
-                        <MenuItem mnemonicParsing="false" onAction="#showSeating" text="Seating" />
-                    <MenuItem mnemonicParsing="false" text="Close" />
-                  </items>
-                </Menu>
-                <Menu id="Help" mnemonicParsing="false" text="Help">
-                  <items>
-                    <MenuItem mnemonicParsing="false" text="A/C_" />
-                  </items>
-                </Menu>
-              </menus>
+               <menus>
+                  <Menu id="Mode" mnemonicParsing="false" text="Mode">
+                     <items>
+                        <MenuItem fx:id="summarizer" mnemonicParsing="false" onAction="#skipToSummarizer" text="Summarizer" />
+                        <MenuItem fx:id="seating" mnemonicParsing="false" onAction="#skipToSeating" text="Seating" />
+                        <MenuItem fx:id="close" mnemonicParsing="false" onAction="#exitProgram" text="Close" />
+                     </items>
+                  </Menu>
+                  <Menu id="Help" mnemonicParsing="false" text="Help">
+                     <items>
+                        <MenuItem fx:id="help" mnemonicParsing="false" onAction="#skipToCredits" text="About" />
+                     </items>
+                  </Menu>
+               </menus>
             </MenuBar>
          </top>
       </BorderPane>
