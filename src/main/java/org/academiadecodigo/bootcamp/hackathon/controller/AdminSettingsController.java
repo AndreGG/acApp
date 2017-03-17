@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp.hackathon.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class AdminSettingsController {
+public class AdminSettingsController implements Controller {
 
     private AdminService adminService;
 
@@ -201,13 +202,12 @@ public class AdminSettingsController {
 
     @FXML
     void showCredits(ActionEvent event) {
-
+        Navigator.getInstance().loadScreen("credits");
     }
-
 
     @FXML
     void showSeating(ActionEvent event) {
-
+        Navigator.getInstance().loadScreen("seating");
     }
 
     @FXML
@@ -289,10 +289,6 @@ public class AdminSettingsController {
 
     }
 
-
-
-
-
     private void setCreateElementsVisible(boolean isVisible) {
         totalOfCadets.setVisible(isVisible);
         textNrOfCadets.setVisible(isVisible);
@@ -350,5 +346,39 @@ public class AdminSettingsController {
         bootcampList.setVisible(isVisible);
         newName.setVisible(isVisible);
         changeNameButton.setVisible(isVisible);
+    }
+
+    public void skipToSummarizer(ActionEvent actionEvent) {
+        Navigator.getInstance().loadScreen("Summarizer");
+    }
+
+
+    public void skipToSeating(ActionEvent actionEvent) {
+        Navigator.getInstance().loadScreen("seating");
+    }
+
+
+    public void exitProgram(ActionEvent actionEvent) {
+        System.exit(0);
+    }
+
+
+    public void skipToCredits(ActionEvent actionEvent) {
+        Navigator.getInstance().loadScreen("credits");
+    }
+
+    @Override
+    public void initialize() {
+
+    }
+
+    @Override
+    public void addEventHandler(Scene scene) {
+
+    }
+
+    @Override
+    public void setServices() {
+
     }
 }

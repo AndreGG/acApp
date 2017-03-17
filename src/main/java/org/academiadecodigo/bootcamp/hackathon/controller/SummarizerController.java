@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.concurrent.Task;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
@@ -225,6 +226,25 @@ public class SummarizerController implements Controller {
     @Override
     public void setServices() {
 
+    }
+
+    public void skipToSummarizer(ActionEvent actionEvent) {
+        Navigator.getInstance().loadScreen("Summarizer");
+    }
+
+
+    public void skipToSeating(ActionEvent actionEvent) {
+        Navigator.getInstance().loadScreen("Seating");
+    }
+
+
+    public void exitProgram(ActionEvent actionEvent) {
+        System.exit(0);
+    }
+
+
+    public void skipToCredits(ActionEvent actionEvent) {
+        Navigator.getInstance().loadScreen("credits");
     }
 }
 

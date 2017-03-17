@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp.hackathon.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
@@ -12,7 +13,7 @@ import org.academiadecodigo.bootcamp.hackathon.navigation.Navigator;
  * Created by codecadet on 3/16/17.
  */
 
-public class WelcomeController {
+public class WelcomeController implements Controller {
 
     @FXML
     private ImageView logo;
@@ -71,7 +72,8 @@ public class WelcomeController {
     public void skipToCredits(ActionEvent actionEvent) {
         Navigator.getInstance().loadScreen("credits");
     }
-    
+
+
     @Override
     public void initialize() {
 
