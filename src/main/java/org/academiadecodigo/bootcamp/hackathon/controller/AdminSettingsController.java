@@ -182,7 +182,7 @@ public class AdminSettingsController implements Controller {
     private Button submitButton;
 
     @FXML
-    private ChoiceBox<?> bootcampList;
+    private ChoiceBox<String> bootcampList;
 
     @FXML
     private Label selectBootcamp;
@@ -265,6 +265,10 @@ public class AdminSettingsController implements Controller {
     @FXML
     void saveNameChange(MouseEvent event) {
 
+        String currentName = bootcampList.getValue();
+        String newBootcampName = textBootcampNewName.getText();
+
+        adminService.changeBootcampName(currentName, newBootcampName);
     }
 
     private void populateTextFieldCadets(){
@@ -374,6 +378,7 @@ public class AdminSettingsController implements Controller {
     @Override
     public void initialize() {
 
+        bootcampList.getItems().addAll(adminService.getAllBootcampsByName());
     }
 
     @Override
