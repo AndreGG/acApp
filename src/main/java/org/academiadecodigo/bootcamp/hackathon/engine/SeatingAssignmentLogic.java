@@ -32,10 +32,15 @@ public class SeatingAssignmentLogic implements Service {
 
         HibernateSessionManager.beginTransaction();
         this.cadets = bootcampDao.getCadets("Javangers");
-        System.out.println(cadets);
         HibernateSessionManager.commitTransaction();
         riggedSeats = new HashMap<>();
 
+    }
+
+    public void resetCadetList() {
+        HibernateSessionManager.beginTransaction();
+        this.cadets = bootcampDao.getCadets("Javangers");
+        HibernateSessionManager.commitTransaction();
     }
 
     public Cadet assignSeat(int seatNumber) {

@@ -15,6 +15,7 @@ import org.academiadecodigo.bootcamp.hackathon.engine.SeatingAssignmentLogic;
 import org.academiadecodigo.bootcamp.hackathon.engine.seats.Seat;
 import org.academiadecodigo.bootcamp.hackathon.model.Cadet;
 import org.academiadecodigo.bootcamp.hackathon.model.dao.hibernate.HibernateCadetDao;
+import org.academiadecodigo.bootcamp.hackathon.navigation.Navigator;
 import org.academiadecodigo.bootcamp.hackathon.services.SeatTestService;
 import org.academiadecodigo.bootcamp.hackathon.services.ServiceRegistry;
 
@@ -96,6 +97,10 @@ public class seatingController implements Controller {
                     case R:
                         for(Label label: labelArray) {
                             label.setText("");
+                            iterator = labelArray.iterator();
+                            currentSeat = 0;
+                            sal.resetCadetList();
+                            cadetsList.getItems().setAll(seatTestService.findAll());
                         }
                     default:
                         System.out.println(event.getCode() + " tou dentro");
@@ -121,25 +126,26 @@ public class seatingController implements Controller {
 
     @Override
     public void setServices() {
-
         this.sal = (SeatingAssignmentLogic)ServiceRegistry.getInstance().getService(SeatingAssignmentLogic.class);
-        System.out.println("SAL Service " + sal);
-
     }
 
     public void assignSeat() {
 
         Cadet cadet = sal.assignSeat(currentSeat);
         if(!iterator.hasNext()) {
+
             iterator = labelArray.iterator();
             currentSeat = 0;
             cadetsList.getItems().setAll(seatTestService.findAll());
+
         } else {
+
             Label currentLabel = iterator.next();
             currentLabel.setText(cadet.getName());
             cadets.remove(cadet);
             cadetsList.getItems().remove(cadet);
             currentSeat++;
+
         }
 
     }
@@ -168,7 +174,7 @@ public class seatingController implements Controller {
         iterator = labelArray.iterator();
 
         for(Label label: labelArray) {
-            System.out.println(label + "label");
+            label.setText("");
         }
 
     }
@@ -177,16 +183,63 @@ public class seatingController implements Controller {
     @FXML
     void showAdminSettings(MouseEvent event) {
 
+        Navigator.getInstance().loadScreen("AdminView");
+
     }
 
     @FXML
     void showSeating(ActionEvent event) {
 
+        Navigator.getInstance().loadScreen("seating");
+
     }
 
     @FXML
     void logoClicked(MouseEvent event) {
+    }
+
+
+    @FXML
+    void skipToCredits(ActionEvent event) {
+
+        Navigator.getInstance().loadScreen("credits");
 
     }
 
+    @FXML
+    void skipToSeating(ActionEvent event) {
+
+        Navigator.getInstance().loadScreen("seating");
+
+    }
+
+    @FXML
+    void skipToSummarizer(ActionEvent event) {
+
+        Navigator.getInstance().loadScreen("summarizer_dum");
+
+    }
+
+    @FXML
+    void exitProgram(ActionEvent event) {
+
+        System.exit(0);
+
+    }
+
+    @FXML
+    void showSeating(MouseEvent event) {
+
+        Navigator.getInstance().loadScreen("seating");
+
+    }
+
+    @FXML
+    void showSummarizer(MouseEvent event) {
+
+        Navigator.getInstance().loadScreen("Summarizer");
+
+    }
 }
+
+

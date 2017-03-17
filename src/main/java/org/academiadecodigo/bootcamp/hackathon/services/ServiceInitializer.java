@@ -24,6 +24,10 @@ public class ServiceInitializer {
         SeatingAssignmentLogic sal = new SeatingAssignmentLogic(cadetDAO, bootcampDAO);
 
         AdminService adminService = new AdminService(bootcampDAO, hibernateTransactionManager);
+        SeatTestService seatTestService = new SeatTestService(cadetDAO,hibernateTransactionManager);
+
+        SeatTestService service = new SeatTestService(cadetDAO, hibernateTransactionManager);
+        ServiceRegistry.getInstance().registerService(service);
 
         ServiceRegistry.getInstance().registerService(adminService);
         ServiceRegistry.getInstance().registerService(sal);

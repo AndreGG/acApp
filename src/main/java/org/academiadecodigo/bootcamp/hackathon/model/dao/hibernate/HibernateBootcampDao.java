@@ -49,11 +49,15 @@ public class HibernateBootcampDao extends HibernateDao<Bootcamp> implements Boot
             q.setString("name", name);
             e = (Bootcamp)q.uniqueResult();
 
-            return e.getCadets();
+            if(e != null) {
+                return e.getCadets();
+            }
 
         } catch (HibernateException hex) {
             throw new TransactionException(hex);
         }
+
+        return null;
 
     }
 }

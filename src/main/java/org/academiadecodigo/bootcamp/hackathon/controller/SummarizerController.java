@@ -233,12 +233,12 @@ public class SummarizerController implements Controller {
     }
 
     public void skipToSummarizer(ActionEvent actionEvent) {
-        Navigator.getInstance().loadScreen("Summarizer");
+        Navigator.getInstance().loadScreen("summarizer_dum");
     }
 
 
     public void skipToSeating(ActionEvent actionEvent) {
-        Navigator.getInstance().loadScreen("Seating");
+        Navigator.getInstance().loadScreen("seating");
     }
 
 

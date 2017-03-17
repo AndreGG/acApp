@@ -183,7 +183,7 @@ public class AdminSettingsController implements Controller {
     private Button submitButton;
 
     @FXML
-    private ChoiceBox<?> bootcampList;
+    private ChoiceBox<String> bootcampList;
 
     @FXML
     private Label selectBootcamp;
@@ -216,7 +216,7 @@ public class AdminSettingsController implements Controller {
 
     @FXML
     void showSummarizer(ActionEvent event) {
-        Navigator.getInstance().loadScreen("Summarizer");
+        Navigator.getInstance().loadScreen("summarizer_dum");
     }
 
     @FXML
@@ -265,12 +265,21 @@ public class AdminSettingsController implements Controller {
     void showManageElements(MouseEvent event) {
         setCreateElementsVisible(false);
         setManageElementsVisible(true);
+
+        bootcampList.getItems().addAll(adminService.getAllBootcampsByName());
     }
 
 
 
     @FXML
     void saveNameChange(MouseEvent event) {
+
+        String current = bootcampList.getValue();
+        String newBootcamp = textBootcampNewName.getText();
+
+        adminService.changeBootcampName(current, newBootcamp);
+
+        Navigator.getInstance().loadScreen("AdminView");
 
     }
 
@@ -360,7 +369,7 @@ public class AdminSettingsController implements Controller {
     }
 
     public void skipToSummarizer(ActionEvent actionEvent) {
-        Navigator.getInstance().loadScreen("Summarizer");
+        Navigator.getInstance().loadScreen("summarizer_dum");
     }
 
 
