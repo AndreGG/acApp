@@ -25,6 +25,7 @@ public class Main extends Application {
         Navigator.getInstance().setStage(primaryStage);
         Navigator.getInstance().loadScreen("Welcome");
 
+
     }
 
     @Override
