@@ -31,14 +31,14 @@
               <menus>
                 <Menu id="Mode" mnemonicParsing="false" text="Mode">
                   <items>
-                        <MenuItem fx:id="summarizer" mnemonicParsing="false" onAction="#showSummarizer" text="Summarizer" />
-                        <MenuItem fx:id="seating" mnemonicParsing="false" onAction="#showSeating" text="Seating" />
-                    <MenuItem fx:id="close" mnemonicParsing="false" onAction="#exitProgramm" text="Close" />
+                        <MenuItem fx:id="summarizer" mnemonicParsing="false" onAction="#skipToSummarizer" text="Summarizer" />
+                        <MenuItem fx:id="seating" mnemonicParsing="false" onAction="#skipToSeating" text="Seating" />
+                    <MenuItem fx:id="close" mnemonicParsing="false" onAction="#exitProgram" text="Close" />
                   </items>
                 </Menu>
                 <Menu id="Help" mnemonicParsing="false" text="Help">
                   <items>
-                    <MenuItem fx:id="help" mnemonicParsing="false" onAction="#showCredits" text="A/C_" />
+                    <MenuItem fx:id="help" mnemonicParsing="false" onAction="#skipToCredits" text="About" />
                   </items>
                 </Menu>
               </menus>

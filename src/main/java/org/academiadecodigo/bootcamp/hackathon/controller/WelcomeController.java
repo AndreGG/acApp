@@ -34,7 +34,7 @@ public class WelcomeController implements Controller {
     private MenuItem help;
 
     @FXML
-    void exitProgramm(ActionEvent event) {
+    void exitProgram(ActionEvent event) {
         System.exit(0);
     }
 
@@ -46,12 +46,11 @@ public class WelcomeController implements Controller {
     @FXML
     void showCredits(ActionEvent event) {
         Navigator.getInstance().loadScreen("credits");
-
     }
 
     @FXML
     void showSeating(ActionEvent event) {
-
+        Navigator.getInstance().loadScreen("seating");
     }
 
     @FXML
@@ -59,6 +58,22 @@ public class WelcomeController implements Controller {
         Navigator.getInstance().loadScreen("Summarizer");
     }
 
+
+    @FXML
+    public void skipToSummarizer(ActionEvent actionEvent) {
+        Navigator.getInstance().loadScreen("Summarizer");
+    }
+
+    @FXML
+    public void skipToSeating(ActionEvent actionEvent) {
+        Navigator.getInstance().loadScreen("seating");
+    }
+
+    @FXML
+    public void skipToCredits(ActionEvent actionEvent) {
+        Navigator.getInstance().loadScreen("credits");
+    }
+    
     @Override
     public void initialize() {
 
