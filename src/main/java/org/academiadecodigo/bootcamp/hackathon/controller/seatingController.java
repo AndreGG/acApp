@@ -11,6 +11,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import org.academiadecodigo.bootcamp.hackathon.AudioManager;
 import org.academiadecodigo.bootcamp.hackathon.engine.SeatingAssignmentLogic;
 import org.academiadecodigo.bootcamp.hackathon.engine.seats.Seat;
 import org.academiadecodigo.bootcamp.hackathon.model.Cadet;
@@ -102,7 +103,9 @@ public class seatingController implements Controller {
                             sal.resetCadetList();
                             cadetsList.getItems().setAll(seatTestService.findAll());
                         }
+                        break;
                     default:
+                        AudioManager.loop("drums", 5);
                         System.out.println(event.getCode() + " tou dentro");
                         break;
                 }
@@ -114,14 +117,16 @@ public class seatingController implements Controller {
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
                     case SPACE:
+                        AudioManager.stopAll();
+                        AudioManager.start("tadaaa");
                         assignSeat();
+                        break;
                     default:
                         System.out.println(event.getCode() + " tou dentro");
                         break;
                 }
             }
         });
-
     }
 
     @Override
@@ -145,7 +150,6 @@ public class seatingController implements Controller {
             cadets.remove(cadet);
             cadetsList.getItems().remove(cadet);
             currentSeat++;
-
         }
 
     }
@@ -176,20 +180,18 @@ public class seatingController implements Controller {
         for(Label label: labelArray) {
             label.setText("");
         }
-
     }
-
 
     @FXML
     void showAdminSettings(MouseEvent event) {
-
+        AudioManager.stopAll();
         Navigator.getInstance().loadScreen("AdminView");
 
     }
 
     @FXML
     void showSeating(ActionEvent event) {
-
+        AudioManager.stopAll();
         Navigator.getInstance().loadScreen("seating");
 
     }
@@ -201,42 +203,42 @@ public class seatingController implements Controller {
 
     @FXML
     void skipToCredits(ActionEvent event) {
-
+        AudioManager.stopAll();
         Navigator.getInstance().loadScreen("credits");
 
     }
 
     @FXML
     void skipToSeating(ActionEvent event) {
-
+        AudioManager.stopAll();
         Navigator.getInstance().loadScreen("seating");
 
     }
 
     @FXML
     void skipToSummarizer(ActionEvent event) {
-
+        AudioManager.stopAll();
         Navigator.getInstance().loadScreen("summarizer_dum");
 
     }
 
     @FXML
     void exitProgram(ActionEvent event) {
-
+        AudioManager.stopAll();
         System.exit(0);
 
     }
 
     @FXML
     void showSeating(MouseEvent event) {
-
+        AudioManager.stopAll();
         Navigator.getInstance().loadScreen("seating");
 
     }
 
     @FXML
     void showSummarizer(MouseEvent event) {
-
+        AudioManager.stopAll();
         Navigator.getInstance().loadScreen("Summarizer");
 
     }
