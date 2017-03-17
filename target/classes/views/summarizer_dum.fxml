@@ -10,14 +10,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Ellipse?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="topNode" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.academiadecodigo.bootcamp.hackathon.controller.SummarizerController">
+<AnchorPane fx:id="topNode" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.academiadecodigo.bootcamp.hackathon.controller.SummarizerController">
    <children>
       <BorderPane prefHeight="400.0" prefWidth="610.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -30,23 +28,18 @@
                   </ImageView>
                   <Group fx:id="wheelOfFate" layoutX="503.0" layoutY="499.0" onKeyReleased="#spinWheel" rotate="180.0">
                      <children>
-                        <Ellipse layoutX="-11.0" layoutY="-17.0" radiusX="71.0" radiusY="169.0" stroke="BLACK" strokeType="INSIDE">
-                           <fill>
-                              <RadialGradient centerX="0.5056179775280899" centerY="0.5048076923076923" focusDistance="0.023809523809523725" radius="1.0">
-                                 <stops>
-                                    <Stop color="BLACK" />
-                                    <Stop color="#8d7726" offset="1.0" />
-                                 </stops>
-                              </RadialGradient>
-                           </fill>
-                        </Ellipse>
+                        <ImageView fitHeight="312.0" fitWidth="188.0" layoutX="-99.0" layoutY="-146.0">
+                           <image>
+                              <Image url="@../dummies.png" />
+                           </image>
+                        </ImageView>
                         <Circle fill="#fafcfb" layoutX="-3.0" layoutY="10.0" opacity="0.0" radius="176.0" stroke="BLACK" strokeType="INSIDE" />
-                        <Label fx:id="topCadetName" alignment="CENTER" layoutX="-71.0" layoutY="-72.0" text="CodeCadet" textAlignment="CENTER" textOverrun="CLIP">
+                        <Label fx:id="topCadetName" alignment="CENTER" layoutX="-68.0" layoutY="-96.0" text="CodeCadet" textAlignment="CENTER" textOverrun="CLIP">
                            <font>
                               <Font name="Inconsolata" size="22.0" />
                            </font>
                         </Label>
-                        <Label fx:id="bottomCadetName" alignment="CENTER" layoutX="-67.0" layoutY="43.0" rotate="180.0" text="CodeCadet" textAlignment="CENTER" textOverrun="CLIP">
+                        <Label fx:id="bottomCadetName" alignment="CENTER" layoutX="-60.0" layoutY="87.0" rotate="180.0" text="CodeCadet" textAlignment="CENTER" textOverrun="CLIP">
                            <font>
                               <Font name="Inconsolata" size="22.0" />
                            </font>

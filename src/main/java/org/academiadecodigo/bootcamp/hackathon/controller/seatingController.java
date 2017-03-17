@@ -93,7 +93,7 @@ public class seatingController implements Controller {
     @FXML
     void skipToSummarizer(ActionEvent event) {
 
-        Navigator.getInstance().loadScreen("Summarizer");
+        Navigator.getInstance().loadScreen("summarizer_dum");
 
     }
 

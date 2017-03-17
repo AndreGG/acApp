@@ -53,30 +53,25 @@ public class WelcomeController implements Controller{
     }
 
     @FXML
-    void showSummarizer(MouseEvent event) {
-
-        Navigator.getInstance().loadScreen("Summarizer");
-
-    }
-
-    @FXML
     void skipToCredits(ActionEvent event) {
 
         Navigator.getInstance().loadScreen("credits");
+    }
 
+    @FXML
+    void showSummarizer(ActionEvent event) {
+        Navigator.getInstance().loadScreen("summarizer_dum");
+    }
+
+    @FXML
+    public void skipToSummarizer(ActionEvent actionEvent) {
+        Navigator.getInstance().loadScreen("summarizer_dum");
     }
 
     @FXML
     void skipToSeating(ActionEvent event) {
 
         Navigator.getInstance().loadScreen("seating");
-    }
-
-    @FXML
-    void skipToSummarizer(ActionEvent event) {
-
-        Navigator.getInstance().loadScreen("Summarizer");
-
     }
 
     @Override
