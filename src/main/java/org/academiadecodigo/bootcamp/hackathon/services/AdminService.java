@@ -7,11 +7,7 @@ import org.academiadecodigo.bootcamp.hackathon.persistence.TransactionManager;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.academiadecodigo.bootcamp.hackathon.model.Cadet;
-import org.academiadecodigo.bootcamp.hackathon.model.dao.BootcampDao;
-import org.academiadecodigo.bootcamp.hackathon.model.dao.CadetDao;
 import org.academiadecodigo.bootcamp.hackathon.persistence.TransactionException;
-import org.academiadecodigo.bootcamp.hackathon.persistence.TransactionManager;
 
 /**
  * Created by codecadet on 3/16/17.
@@ -62,7 +58,7 @@ public class AdminService implements Service {
         tx.commitTransaction();
     }
 
-    public void createBootcamp(Bootcamp bootcamp){
+    public void createBootcamp(Bootcamp bootcamp) {
 
         try {
             tx.beginTransaction();
@@ -70,11 +66,10 @@ public class AdminService implements Service {
             bootcampDao.create(bootcamp);
 
             tx.commitTransaction();
-        }catch (TransactionException ex){
+        } catch (TransactionException ex) {
 
             tx.rollbackTransaction();
 
         }
     }
-
 }
