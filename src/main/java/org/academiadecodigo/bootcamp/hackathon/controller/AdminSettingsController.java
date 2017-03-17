@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp.hackathon.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -12,14 +13,17 @@ import org.academiadecodigo.bootcamp.hackathon.model.Bootcamp;
 import org.academiadecodigo.bootcamp.hackathon.model.Cadet;
 import org.academiadecodigo.bootcamp.hackathon.navigation.Navigator;
 import org.academiadecodigo.bootcamp.hackathon.services.AdminService;
+import org.academiadecodigo.bootcamp.hackathon.services.ServiceRegistry;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class AdminSettingsController {
+public class AdminSettingsController implements Controller {
 
     private AdminService adminService;
+
+
 
     @FXML
     private MenuItem summarizer;
@@ -192,7 +196,10 @@ public class AdminSettingsController {
     @FXML
     private Label newName;
 
-    private ArrayList<TextField> textFieldsCadets;
+    @FXML
+    private TextField textBootcampNewName;
+
+    private ArrayList<TextField> textFieldsCadets = new ArrayList<>();
 
     @FXML
     void exitProgramm(ActionEvent event) {
@@ -201,13 +208,12 @@ public class AdminSettingsController {
 
     @FXML
     void showCredits(ActionEvent event) {
-
+        Navigator.getInstance().loadScreen("credits");
     }
-
 
     @FXML
     void showSeating(ActionEvent event) {
-
+        Navigator.getInstance().loadScreen("seating");
     }
 
     @FXML
@@ -218,7 +224,10 @@ public class AdminSettingsController {
     @FXML
     void submitNewBootcamp(MouseEvent event) {
 
+        System.out.println(text1.getText());
+
         populateTextFieldCadets();
+        System.out.println(textFieldsCadets.get(1).getText());
 
         Set<Cadet> cadets = new HashSet<>();
 
@@ -229,11 +238,12 @@ public class AdminSettingsController {
         for(int i = 0; i < textFieldsCadets.size() - 1; i++){
             String nameCadet = textFieldsCadets.get(i).getText();
 
-            if(nameCadet != null) {
+            if(!nameCadet.equals("")) {
 
                 Cadet cadet = new Cadet();
                 cadet.setName(nameCadet);
                 cadet.setCurrentSeat(0);
+                cadet.setAvailableToSummerize(true);
 
                 cadets.add(cadet);
             }
@@ -242,6 +252,8 @@ public class AdminSettingsController {
         bootcamp.setCadets(cadets);
 
         adminService.createBootcamp(bootcamp);
+
+        Navigator.getInstance().loadScreen("AdminView");
     }
 
     @FXML
@@ -266,32 +278,28 @@ public class AdminSettingsController {
 
     private void populateTextFieldCadets(){
 
-        textFieldsCadets.add(1, text1);
-        textFieldsCadets.add(2, text2);
-        textFieldsCadets.add(3, text3);
-        textFieldsCadets.add(4, text4);
-        textFieldsCadets.add(5, text5);
-        textFieldsCadets.add(6, text6);
-        textFieldsCadets.add(7, text7);
-        textFieldsCadets.add(8, text8);
-        textFieldsCadets.add(9, text9);
-        textFieldsCadets.add(10, text10);
-        textFieldsCadets.add(11, text11);
-        textFieldsCadets.add(12, text12);
-        textFieldsCadets.add(13, text13);
-        textFieldsCadets.add(14, text14);
-        textFieldsCadets.add(15, text15);
-        textFieldsCadets.add(16, text16);
-        textFieldsCadets.add(17, text17);
-        textFieldsCadets.add(18, text18);
-        textFieldsCadets.add(19, text19);
-        textFieldsCadets.add(20, text20);
+        textFieldsCadets.add(text1);
+        textFieldsCadets.add(text2);
+        textFieldsCadets.add(text3);
+        textFieldsCadets.add(text4);
+        textFieldsCadets.add(text5);
+        textFieldsCadets.add(text6);
+        textFieldsCadets.add(text7);
+        textFieldsCadets.add(text8);
+        textFieldsCadets.add(text9);
+        textFieldsCadets.add(text10);
+        textFieldsCadets.add(text11);
+        textFieldsCadets.add(text12);
+        textFieldsCadets.add(text13);
+        textFieldsCadets.add(text14);
+        textFieldsCadets.add(text15);
+        textFieldsCadets.add(text16);
+        textFieldsCadets.add(text17);
+        textFieldsCadets.add(text18);
+        textFieldsCadets.add(text19);
+        textFieldsCadets.add(text20);
 
     }
-
-
-
-
 
     private void setCreateElementsVisible(boolean isVisible) {
         totalOfCadets.setVisible(isVisible);
@@ -349,6 +357,43 @@ public class AdminSettingsController {
         selectBootcamp.setVisible(isVisible);
         bootcampList.setVisible(isVisible);
         newName.setVisible(isVisible);
+        textBootcampNewName.setVisible(isVisible);
         changeNameButton.setVisible(isVisible);
+    }
+
+    public void skipToSummarizer(ActionEvent actionEvent) {
+        Navigator.getInstance().loadScreen("Summarizer");
+    }
+
+
+    public void skipToSeating(ActionEvent actionEvent) {
+        Navigator.getInstance().loadScreen("seating");
+    }
+
+
+    public void exitProgram(ActionEvent actionEvent) {
+        System.exit(0);
+    }
+
+
+    public void skipToCredits(ActionEvent actionEvent) {
+        Navigator.getInstance().loadScreen("credits");
+    }
+
+    @Override
+    public void initialize() {
+
+        adminService = (AdminService) ServiceRegistry.getInstance().getService(AdminService.class);
+
+    }
+
+    @Override
+    public void addEventHandler(Scene scene) {
+
+    }
+
+    @Override
+    public void setServices() {
+
     }
 }
