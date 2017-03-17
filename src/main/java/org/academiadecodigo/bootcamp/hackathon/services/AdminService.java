@@ -31,16 +31,19 @@ public class AdminService implements Service {
 
     public List<String> getAllBootcampsByName() {
 
+        tx.beginTransaction();
+
         List<String> bootcampName = new LinkedList<>();
 
         List<Bootcamp> bootcamps = bootcampDao.findAll();
 
-        while (bootcamps.iterator().hasNext()) {
 
-            int i = 0;
+        for(int i = 0; i < bootcamps.size(); i++){
+
             bootcampName.add(bootcamps.get(i).getName());
-            i++;
         }
+
+        tx.commitTransaction();
 
         return bootcampName;
     }

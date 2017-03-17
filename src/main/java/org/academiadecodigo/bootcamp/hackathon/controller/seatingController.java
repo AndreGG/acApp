@@ -12,6 +12,7 @@ import org.academiadecodigo.bootcamp.hackathon.engine.SeatingAssignmentLogic;
 import org.academiadecodigo.bootcamp.hackathon.engine.seats.Seat;
 import org.academiadecodigo.bootcamp.hackathon.model.Cadet;
 import org.academiadecodigo.bootcamp.hackathon.model.dao.hibernate.HibernateCadetDao;
+import org.academiadecodigo.bootcamp.hackathon.navigation.Navigator;
 import org.academiadecodigo.bootcamp.hackathon.services.SeatTestService;
 import org.academiadecodigo.bootcamp.hackathon.services.ServiceRegistry;
 
@@ -59,21 +60,63 @@ public class seatingController implements Controller {
     @FXML
     void showAdminSettings(MouseEvent event) {
 
+        Navigator.getInstance().loadScreen("AdminView");
+
     }
 
     @FXML
     void showSeating(ActionEvent event) {
 
+        Navigator.getInstance().loadScreen("seating");
+
     }
 
     @FXML
     void logoClicked(MouseEvent event) {
-
-
-
     }
 
 
+    @FXML
+    void skipToCredits(ActionEvent event) {
 
+        Navigator.getInstance().loadScreen("credits");
 
+    }
+
+    @FXML
+    void skipToSeating(ActionEvent event) {
+
+        Navigator.getInstance().loadScreen("seating");
+
+    }
+
+    @FXML
+    void skipToSummarizer(ActionEvent event) {
+
+        Navigator.getInstance().loadScreen("Summarizer");
+
+    }
+
+    @FXML
+    void exitProgram(ActionEvent event) {
+
+        System.exit(0);
+
+    }
+
+    @FXML
+    void showSeating(MouseEvent event) {
+
+        Navigator.getInstance().loadScreen("seating");
+
+    }
+
+    @FXML
+    void showSummarizer(MouseEvent event) {
+
+        Navigator.getInstance().loadScreen("Summarizer");
+
+    }
 }
+
+

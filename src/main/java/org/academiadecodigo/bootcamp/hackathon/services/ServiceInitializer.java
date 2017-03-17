@@ -22,8 +22,10 @@ public class ServiceInitializer {
         SummarizerDao summarizerDao = new HibernateSummarizerDao();
 
         AdminService adminService = new AdminService(bootcampDAO, hibernateTransactionManager);
+        SeatTestService seatTestService = new SeatTestService(cadetDAO,hibernateTransactionManager);
 
         ServiceRegistry.getInstance().registerService(adminService);
+        ServiceRegistry.getInstance().registerService(seatTestService);
 
     }
 

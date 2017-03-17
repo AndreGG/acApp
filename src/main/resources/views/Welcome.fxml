@@ -16,7 +16,7 @@
          <center>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" stylesheets="@styles.css" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fx:id="logo" layoutX="373.0" layoutY="224.0" onMousePressed="#showAdminSettings" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="224.0">
+                  <ImageView fx:id="logo" layoutX="373.0" layoutY="224.0" onMousePressed="#showAdminSettings" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="372.0">
                      <image>
                         <Image url="@../logo.png" />
                      </image>
