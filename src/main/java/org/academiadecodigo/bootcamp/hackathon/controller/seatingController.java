@@ -74,4 +74,8 @@ public class seatingController implements Controller {
     public void exitProgram(ActionEvent actionEvent) {
         System.exit(0);
     }
+
+    public void skipToCredits(ActionEvent actionEvent) {
+        Navigator.getInstance().loadScreen("credits");
+    }
 }
