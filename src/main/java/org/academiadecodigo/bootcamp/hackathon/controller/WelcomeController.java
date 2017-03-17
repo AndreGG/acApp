@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import org.academiadecodigo.bootcamp.hackathon.navigation.Navigator;
 
 /**
  * Created by codecadet on 3/16/17.
@@ -33,12 +34,12 @@ public class WelcomeController {
 
     @FXML
     void exitProgramm(ActionEvent event) {
-
+        System.exit(0);
     }
 
     @FXML
     void showAdminSettings(MouseEvent event) {
-
+        Navigator.getInstance().loadScreen("AdminView");
     }
 
     @FXML
@@ -53,7 +54,7 @@ public class WelcomeController {
 
     @FXML
     void showSummarizer(ActionEvent event) {
-
+        Navigator.getInstance().loadScreen("Summarizer");
     }
 
 }

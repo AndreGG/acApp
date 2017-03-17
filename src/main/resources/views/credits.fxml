@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="1000.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView layoutX="611.0" layoutY="564.0">
+         <image>
+            <Image url="@../logo.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="143.0" layoutY="608.0" text="Special thanks to">
+         <font>
+            <Font name="Inconsolata" size="42.0" />
+         </font>
+      </Label>
+      <Label layoutX="143.0" layoutY="184.0" text="Amarals">
+         <font>
+            <Font name="Inconsolata" size="69.0" />
+         </font>
+      </Label>
+      <Label layoutX="143.0" layoutY="328.0" text="André">
+         <font>
+            <Font name="Inconsolata" size="69.0" />
+         </font>
+      </Label>
+      <Label layoutX="535.0" layoutY="191.0" text="António">
+         <font>
+            <Font name="Inconsolata" size="69.0" />
+         </font>
+      </Label>
+      <Label layoutX="535.0" layoutY="328.0" text="Giuliano">
+         <font>
+            <Font name="Inconsolata" size="69.0" />
+         </font>
+      </Label>
+      <Label layoutX="310.0" layoutY="54.0" text="Developers:">
+         <font>
+            <Font name="Inconsolata" size="69.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
