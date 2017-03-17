@@ -2,16 +2,25 @@ package org.academiadecodigo.bootcamp.hackathon.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import org.academiadecodigo.bootcamp.hackathon.model.Bootcamp;
+import org.academiadecodigo.bootcamp.hackathon.model.Cadet;
 import org.academiadecodigo.bootcamp.hackathon.navigation.Navigator;
 import org.academiadecodigo.bootcamp.hackathon.services.AdminService;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 public class AdminSettingsController {
+
+    private AdminService adminService;
 
     @FXML
     private MenuItem summarizer;
@@ -39,6 +48,9 @@ public class AdminSettingsController {
 
     @FXML
     private Label bootcampName;
+
+    @FXML
+    private TextField textBootcampName;
 
     @FXML
     private Label bootcampNumber;
@@ -170,7 +182,7 @@ public class AdminSettingsController {
     private Button submitButton;
 
     @FXML
-    private ChoiceBox<String> bootcampList;
+    private ChoiceBox<?> bootcampList;
 
     @FXML
     private Label selectBootcamp;
@@ -181,10 +193,7 @@ public class AdminSettingsController {
     @FXML
     private Label newName;
 
-    @FXML
-    private TextField textBootcampNewName;
-
-    private AdminService adminService;
+    private ArrayList<TextField> textFieldsCadets;
 
     @FXML
     void exitProgramm(ActionEvent event) {
@@ -193,7 +202,7 @@ public class AdminSettingsController {
 
     @FXML
     void showCredits(ActionEvent event) {
-        Navigator.getInstance().loadScreen("credits");
+
     }
 
 
@@ -210,6 +219,30 @@ public class AdminSettingsController {
     @FXML
     void submitNewBootcamp(MouseEvent event) {
 
+        populateTextFieldCadets();
+
+        Set<Cadet> cadets = new HashSet<>();
+
+        Bootcamp bootcamp = new Bootcamp();
+
+        bootcamp.setName(textBootcampName.getText());
+
+        for(int i = 0; i < textFieldsCadets.size() - 1; i++){
+            String nameCadet = textFieldsCadets.get(i).getText();
+
+            if(nameCadet != null) {
+
+                Cadet cadet = new Cadet();
+                cadet.setName(nameCadet);
+                cadet.setCurrentSeat(0);
+
+                cadets.add(cadet);
+            }
+        }
+
+        bootcamp.setCadets(cadets);
+
+        adminService.createBootcamp(bootcamp);
     }
 
     @FXML
@@ -223,30 +256,49 @@ public class AdminSettingsController {
     void showManageElements(MouseEvent event) {
         setCreateElementsVisible(false);
         setManageElementsVisible(true);
-        setDropDownList();
     }
+
 
 
     @FXML
     void saveNameChange(MouseEvent event) {
 
-        String currentName = bootcampList.getValue();
-        String newBootCampName = textBootcampNewName.getText();
-
-        adminService.changeBootcampName(currentName,newBootCampName);
     }
 
-    private void setDropDownList() {
+    private void populateTextFieldCadets(){
 
-        bootcampList.getItems().addAll(adminService.getAllBootcampsByName());
+        textFieldsCadets.add(1, text1);
+        textFieldsCadets.add(2, text2);
+        textFieldsCadets.add(3, text3);
+        textFieldsCadets.add(4, text4);
+        textFieldsCadets.add(5, text5);
+        textFieldsCadets.add(6, text6);
+        textFieldsCadets.add(7, text7);
+        textFieldsCadets.add(8, text8);
+        textFieldsCadets.add(9, text9);
+        textFieldsCadets.add(10, text10);
+        textFieldsCadets.add(11, text11);
+        textFieldsCadets.add(12, text12);
+        textFieldsCadets.add(13, text13);
+        textFieldsCadets.add(14, text14);
+        textFieldsCadets.add(15, text15);
+        textFieldsCadets.add(16, text16);
+        textFieldsCadets.add(17, text17);
+        textFieldsCadets.add(18, text18);
+        textFieldsCadets.add(19, text19);
+        textFieldsCadets.add(20, text20);
+
     }
+
+
+
 
 
     private void setCreateElementsVisible(boolean isVisible) {
         totalOfCadets.setVisible(isVisible);
         textNrOfCadets.setVisible(isVisible);
         bootcampName.setVisible(isVisible);
-        textBootcampNewName.setVisible(isVisible);
+        textBootcampName.setVisible(isVisible);
         bootcampNumber.setVisible(isVisible);
         textBootcampNumber.setVisible(isVisible);
 

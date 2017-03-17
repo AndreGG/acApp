@@ -1,15 +1,23 @@
 package org.academiadecodigo.bootcamp.hackathon.navigation;
 
+import javafx.event.Event;
+import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+import org.academiadecodigo.bootcamp.hackathon.controller.Controller;
+import org.academiadecodigo.bootcamp.hackathon.controller.SummarizerController;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import static javafx.scene.input.KeyEvent.*;
 
 /**
  * Created by codecadet on 3/16/17.
@@ -45,12 +53,18 @@ public final class Navigator {
             fxmlLoader = new FXMLLoader(getClass().getResource(VIEW_PATH + "/" + view + ".fxml"));
             Parent root = fxmlLoader.load();
 
-
             //Store the controller
             controllers.put(view, fxmlLoader.<Initializable>getController());
 
+            Controller c = fxmlLoader.getController();
+
             // Create a new scene and add it to the stack
             Scene scene = new Scene(root);
+
+            if(view.equals("Summarizer")) {
+                c.addEventHandler(scene);
+            }
+
             scenes.push(scene);
 
             // Put the scene on the stage
@@ -74,13 +88,18 @@ public final class Navigator {
     }
 
     public void setScene(Scene scene) {
-        stage.setScene(scene);
 
+        stage.setScene(scene);
         stage.show();
     }
 
+    public Scene getCurrentScene() {
+
+        return scenes.peek();
+    }
+
     public void setStage(Stage stage) {
-        stage.setTitle("Clube do Livro");
+        stage.setTitle("<a/C> App");
         this.stage = stage;
     }
 
@@ -88,4 +107,5 @@ public final class Navigator {
         return controllers.get(controllerName);
 
     }
+
 }

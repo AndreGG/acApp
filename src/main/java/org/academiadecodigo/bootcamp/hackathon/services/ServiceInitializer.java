@@ -6,6 +6,7 @@ import org.academiadecodigo.bootcamp.hackathon.model.dao.hibernate.HibernateCade
 import org.academiadecodigo.bootcamp.hackathon.model.dao.hibernate.HibernateSummarizerDao;
 import org.academiadecodigo.bootcamp.hackathon.persistence.DBConnectionManager;
 import org.academiadecodigo.bootcamp.hackathon.persistence.hibernate.HibernateSessionManager;
+import org.academiadecodigo.bootcamp.hackathon.persistence.hibernate.HibernateTransactionManager;
 
 /**
  * Created by codecadet on 3/16/17.
@@ -15,12 +16,14 @@ public class ServiceInitializer {
 
     public void init() {
 
-        HibernateSessionManager hibernateManager = new HibernateSessionManager();
-        //CadetDao cadetDAO = new HibernateCadetDao(hibernateManager);
-        //BootcampDao bootcampDAO = new HibernateBootcampDao(hibernateManager);
-        //SummarizerDao summarizerDao = new HibernateSummarizerDao(hibernateManager);
+        HibernateTransactionManager hibernateTransactionManager = new HibernateTransactionManager();
+        CadetDao cadetDAO = new HibernateCadetDao();
+        BootcampDao bootcampDAO = new HibernateBootcampDao();
+        SummarizerDao summarizerDao = new HibernateSummarizerDao();
 
-        //ServiceRegistry.getInstance().registerService();
+        AdminService adminService = new AdminService(bootcampDAO, hibernateTransactionManager);
+
+        ServiceRegistry.getInstance().registerService(adminService);
 
     }
 
