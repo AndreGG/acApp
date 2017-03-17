@@ -8,4 +8,6 @@ import org.academiadecodigo.bootcamp.hackathon.model.Bootcamp;
  */
 public interface BootcampDao extends Dao<Bootcamp> {
 
+
+    public Bootcamp findByName(String name);
 }

@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public final class Navigator {
 
-    private static final String VIEW_PATH = "/view";
+    private static final String VIEW_PATH = "/views";
     private static Navigator instance = null;
     private LinkedList<Scene> scenes = new LinkedList();
     private Map<String, Initializable> controllers = new HashMap();
@@ -57,6 +57,7 @@ public final class Navigator {
             setScene(scene);
 
         } catch (IOException e) {
+            e.printStackTrace();
             System.out.println("Failure to load view " + view + " : " + e.getMessage());
         }
 

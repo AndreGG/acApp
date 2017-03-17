@@ -9,6 +9,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import org.academiadecodigo.bootcamp.hackathon.navigation.Navigator;
+import org.academiadecodigo.bootcamp.hackathon.services.AdminService;
 
 public class AdminSettingsController {
 
@@ -38,9 +39,6 @@ public class AdminSettingsController {
 
     @FXML
     private Label bootcampName;
-
-    @FXML
-    private TextField textBootcampName;
 
     @FXML
     private Label bootcampNumber;
@@ -172,7 +170,7 @@ public class AdminSettingsController {
     private Button submitButton;
 
     @FXML
-    private ChoiceBox<?> bootcampList;
+    private ChoiceBox<String> bootcampList;
 
     @FXML
     private Label selectBootcamp;
@@ -184,13 +182,18 @@ public class AdminSettingsController {
     private Label newName;
 
     @FXML
+    private TextField textBootcampNewName;
+
+    private AdminService adminService;
+
+    @FXML
     void exitProgramm(ActionEvent event) {
         System.exit(0);
     }
 
     @FXML
     void showCredits(ActionEvent event) {
-
+        Navigator.getInstance().loadScreen("credits");
     }
 
 
@@ -220,22 +223,30 @@ public class AdminSettingsController {
     void showManageElements(MouseEvent event) {
         setCreateElementsVisible(false);
         setManageElementsVisible(true);
+        setDropDownList();
     }
-
 
 
     @FXML
     void saveNameChange(MouseEvent event) {
 
+        String currentName = bootcampList.getValue();
+        String newBootCampName = textBootcampNewName.getText();
+
+        adminService.changeBootcampName(currentName,newBootCampName);
     }
 
+    private void setDropDownList() {
+
+        bootcampList.getItems().addAll(adminService.getAllBootcampsByName());
+    }
 
 
     private void setCreateElementsVisible(boolean isVisible) {
         totalOfCadets.setVisible(isVisible);
         textNrOfCadets.setVisible(isVisible);
         bootcampName.setVisible(isVisible);
-        textBootcampName.setVisible(isVisible);
+        textBootcampNewName.setVisible(isVisible);
         bootcampNumber.setVisible(isVisible);
         textBootcampNumber.setVisible(isVisible);
 

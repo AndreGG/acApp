@@ -44,7 +44,7 @@ public class WelcomeController {
 
     @FXML
     void showCredits(ActionEvent event) {
-
+        Navigator.getInstance().loadScreen("credits");
     }
 
     @FXML
