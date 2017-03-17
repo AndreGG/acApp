@@ -26,6 +26,9 @@
                     <columns>
                       <TableColumn fx:id="columnCadets" prefWidth="198.0" text="Cadets" />
                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
                   </TableView>
                   <GridPane fx:id="seatingGrid" layoutX="300.0" layoutY="6.0" prefHeight="715.0" prefWidth="700.0">
                     <columnConstraints>
@@ -122,122 +125,122 @@
                               <Image url="@../Seat.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="151.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="4">
+                        <ImageView fitHeight="151.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.rowIndex="4">
                            <image>
                               <Image url="@../Seat.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="151.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                        <ImageView fitHeight="151.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="1" GridPane.rowIndex="4">
                            <image>
                               <Image url="@../Seat.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="151.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                        <ImageView fitHeight="151.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4">
                            <image>
                               <Image url="@../Seat.png" />
                            </image>
                         </ImageView>
-                        <ImageView fitHeight="151.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                        <ImageView fitHeight="151.0" fitWidth="148.0" pickOnBounds="true" preserveRatio="true" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="4">
                            <image>
                               <Image url="@../Seat.png" />
                            </image>
                         </ImageView>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+                        <Label fx:id="seat1" alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+                        <Label fx:id="seat2" alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+                        <Label fx:id="seat3" alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="TOP">
+                        <Label fx:id="seat4" alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                        <Label fx:id="seat5" alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                        <Label fx:id="seat6" alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                        <Label fx:id="seat7" alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                        <Label fx:id="seat8" alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                        <Label fx:id="seat9" alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                        <Label fx:id="seat10" alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                        <Label fx:id="seat11" alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                        <Label fx:id="seat12" alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                        <Label fx:id="seat13" alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                        <Label fx:id="seat14" alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                        <Label fx:id="seat15" alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
+                        <Label fx:id="seat16" alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" visible="false" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" visible="false" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" visible="false" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets top="10.0" />
                            </GridPane.margin>
                         </Label>
-                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
+                        <Label alignment="CENTER" prefHeight="17.0" prefWidth="96.0" text="Label" visible="false" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.rowIndex="4" GridPane.valignment="TOP">
                            <GridPane.margin>
                               <Insets top="10.0" />
                            </GridPane.margin>

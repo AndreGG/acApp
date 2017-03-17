@@ -62,7 +62,6 @@ public final class Navigator {
             Scene scene = new Scene(root);
 
             c.addEventHandler(scene);
-            c.manageAssets();
 
             scenes.push(scene);
 

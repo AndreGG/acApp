@@ -46,6 +46,7 @@ public class HibernateBootcampDao extends HibernateDao<Bootcamp> implements Boot
 
             Session session = HibernateSessionManager.getSession();
             Query q = session.createQuery("from Bootcamp where name = :name");
+            q.setString("name", name);
             e = (Bootcamp)q.uniqueResult();
 
             return e.getCadets();

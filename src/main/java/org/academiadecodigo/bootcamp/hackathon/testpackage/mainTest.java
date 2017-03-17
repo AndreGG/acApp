@@ -65,11 +65,7 @@ public class mainTest extends Application{
         Cadet cadet7 = new Cadet();
         cadet7.setName("Giuliano");
         cadetList.add(cadet7);
-
-        Cadet cadet8 = new Cadet();
-        cadet8.setName("Alexandre");
-        cadetList.add(cadet8);
-
+        
         Cadet cadet9 = new Cadet();
         cadet9.setName("Peter");
         cadetList.add(cadet9);
@@ -135,7 +131,8 @@ public class mainTest extends Application{
         summarizerDao.create(summarizer1);
 
         transactionManager.commitTransaction();
-
+        ServiceInitializer sInit = new ServiceInitializer();
+        sInit.init();
         SeatTestService service = new SeatTestService(cadetDao, transactionManager);
         ServiceRegistry.getInstance().registerService(service);
 
@@ -146,8 +143,7 @@ public class mainTest extends Application{
 
         Navigator.getInstance().setStage(primaryStage);
         Navigator.getInstance().loadScreen("seating");
-        ServiceInitializer sInit = new ServiceInitializer();
-        sInit.init();
+
 
     }
 

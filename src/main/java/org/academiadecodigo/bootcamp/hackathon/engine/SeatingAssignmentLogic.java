@@ -32,6 +32,7 @@ public class SeatingAssignmentLogic implements Service {
 
         HibernateSessionManager.beginTransaction();
         this.cadets = bootcampDao.getCadets("Javangers");
+        System.out.println(cadets);
         HibernateSessionManager.commitTransaction();
         riggedSeats = new HashMap<>();
 
@@ -50,24 +51,39 @@ public class SeatingAssignmentLogic implements Service {
         } else {
 
             int highestRoll = 0;
-            assignedCadet = null;
 
             for(Cadet cadet: cadets) {
 
                 double currentSeat = cadet.getCurrentSeat();
                 int chance = getCadetRow(currentSeat);
 
-                int cadetRoll = RNG.roll() * chance;
+                if (currentSeat == 0) {
+                    chance = 1;
+                }
+
+                int cadetRoll = (RNG.roll() * chance);
+
+                System.out.println(cadetRoll + " roll");
 
                 if(cadetRoll > highestRoll) {
+                    System.out.println("Cadet roll is " + cadetRoll);
                     highestRoll = cadetRoll;
                     assignedCadet = cadet;
+                    System.out.println("highestRoll is " + highestRoll);
                 }
 
             }
         }
 
+        System.out.println("current cadet is " + assignedCadet);
         cadets.remove(assignedCadet);
+
+        if(assignedCadet == null) {
+            manager.beginTransaction();
+            cadets = bootcampDao.getCadets("Javangers");
+            manager.commitTransaction();
+        }
+
         return assignedCadet;
     }
 

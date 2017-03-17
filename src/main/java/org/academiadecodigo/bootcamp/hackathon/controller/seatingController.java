@@ -19,6 +19,7 @@ import org.academiadecodigo.bootcamp.hackathon.services.SeatTestService;
 import org.academiadecodigo.bootcamp.hackathon.services.ServiceRegistry;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 
 /**
@@ -31,6 +32,7 @@ public class seatingController implements Controller {
     private SeatingAssignmentLogic sal;
     private ArrayList<Label> labelArray;
     private int currentSeat = 0;
+    private Iterator<Label> iterator;
 
     @FXML
     private ImageView logo;
@@ -80,6 +82,7 @@ public class seatingController implements Controller {
         seatTestService = (SeatTestService) ServiceRegistry.getInstance().getService(SeatTestService.class);
         columnCadets.setCellValueFactory(new PropertyValueFactory<>("name"));
         cadetsList.getItems().setAll(seatTestService.findAll());
+        manageAssets();
 
     }
 
@@ -90,6 +93,10 @@ public class seatingController implements Controller {
             @Override
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
+                    case R:
+                        for(Label label: labelArray) {
+                            label.setText("");
+                        }
                     default:
                         System.out.println(event.getCode() + " tou dentro");
                         break;
@@ -122,18 +129,21 @@ public class seatingController implements Controller {
 
     public void assignSeat() {
 
-        for(Label label: labelArray) {
-
-            Cadet cadet = sal.assignSeat(labelArray.indexOf(label));
-            label.setText(cadet.getName());
+        Cadet cadet = sal.assignSeat(currentSeat);
+        if(!iterator.hasNext()) {
+            iterator = labelArray.iterator();
+            currentSeat = 0;
+            cadetsList.getItems().setAll(seatTestService.findAll());
+        } else {
+            Label currentLabel = iterator.next();
+            currentLabel.setText(cadet.getName());
             cadets.remove(cadet);
             cadetsList.getItems().remove(cadet);
-
+            currentSeat++;
         }
 
     }
 
-    @Override
     public void manageAssets() {
 
         labelArray = new ArrayList<>();
@@ -155,6 +165,12 @@ public class seatingController implements Controller {
         labelArray.add(seat15);
         labelArray.add(seat16);
 
+        iterator = labelArray.iterator();
+
+        for(Label label: labelArray) {
+            System.out.println(label + "label");
+        }
+
     }
 
 
@@ -171,11 +187,6 @@ public class seatingController implements Controller {
     @FXML
     void logoClicked(MouseEvent event) {
 
-
-
     }
-
-
-
 
 }

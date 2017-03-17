@@ -3,14 +3,19 @@ package org.academiadecodigo.bootcamp.hackathon;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.academiadecodigo.bootcamp.hackathon.navigation.Navigator;
+import org.academiadecodigo.bootcamp.hackathon.services.ServiceInitializer;
 
 /**
  * Created by codecadet on 3/16/17.
  */
 public class Main extends Application {
 
+    ServiceInitializer serviceInitializer = new ServiceInitializer();
+
     @Override
     public void init() {
+
+        serviceInitializer.init();
 
     }
 
@@ -18,7 +23,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         Navigator.getInstance().setStage(primaryStage);
-        Navigator.getInstance().loadScreen("Summarizer");
+        Navigator.getInstance().loadScreen("Welcome");
 
     }
 

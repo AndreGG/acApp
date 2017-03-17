@@ -23,12 +23,12 @@ public class ServiceInitializer {
         SummarizerDao summarizerDao = new HibernateSummarizerDao();
         SeatingAssignmentLogic sal = new SeatingAssignmentLogic(cadetDAO, bootcampDAO);
 
-        ServiceRegistry.getInstance().registerService(sal);
-
         AdminService adminService = new AdminService(bootcampDAO, hibernateTransactionManager);
 
         ServiceRegistry.getInstance().registerService(adminService);
+        ServiceRegistry.getInstance().registerService(sal);
 
+        System.out.println(ServiceRegistry.getInstance().getService(SeatingAssignmentLogic.class));
     }
 
     public void stopServices() {

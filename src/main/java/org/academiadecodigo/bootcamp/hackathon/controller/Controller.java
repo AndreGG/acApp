@@ -13,5 +13,4 @@ public interface Controller {
 
     void setServices();
 
-    void manageAssets();
 }
