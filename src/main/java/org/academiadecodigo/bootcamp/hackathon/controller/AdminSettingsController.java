@@ -193,6 +193,9 @@ public class AdminSettingsController implements Controller {
     @FXML
     private Label newName;
 
+    @FXML
+    private TextField textBootcampNewName;
+
     private ArrayList<TextField> textFieldsCadets;
 
     @FXML
@@ -345,6 +348,7 @@ public class AdminSettingsController implements Controller {
         selectBootcamp.setVisible(isVisible);
         bootcampList.setVisible(isVisible);
         newName.setVisible(isVisible);
+        textBootcampNewName.setVisible(isVisible);
         changeNameButton.setVisible(isVisible);
     }
 
