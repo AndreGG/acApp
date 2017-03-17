@@ -182,7 +182,7 @@ public class AdminSettingsController {
     private Button submitButton;
 
     @FXML
-    private ChoiceBox<?> bootcampList;
+    private ChoiceBox<String> bootcampList;
 
     @FXML
     private Label selectBootcamp;
@@ -193,6 +193,9 @@ public class AdminSettingsController {
     @FXML
     private Label newName;
 
+    @FXML
+    private TextField textBootcampNewName;
+
     private ArrayList<TextField> textFieldsCadets;
 
     @FXML
@@ -202,7 +205,7 @@ public class AdminSettingsController {
 
     @FXML
     void showCredits(ActionEvent event) {
-
+        Navigator.getInstance().loadScreen("credits");
     }
 
 
@@ -258,11 +261,13 @@ public class AdminSettingsController {
         setManageElementsVisible(true);
     }
 
-
-
     @FXML
     void saveNameChange(MouseEvent event) {
 
+        String currentName = bootcampList.getValue();
+        String newBootcampName = textBootcampNewName.getText();
+
+        adminService.changeBootcampName(currentName, newBootcampName);
     }
 
     private void populateTextFieldCadets(){
@@ -287,12 +292,7 @@ public class AdminSettingsController {
         textFieldsCadets.add(18, text18);
         textFieldsCadets.add(19, text19);
         textFieldsCadets.add(20, text20);
-
     }
-
-
-
-
 
     private void setCreateElementsVisible(boolean isVisible) {
         totalOfCadets.setVisible(isVisible);
