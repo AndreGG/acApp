@@ -2,7 +2,6 @@ package org.academiadecodigo.bootcamp.hackathon.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -205,6 +204,7 @@ public class AdminSettingsController {
 
     }
 
+
     @FXML
     void showSeating(ActionEvent event) {
 
@@ -257,9 +257,11 @@ public class AdminSettingsController {
         setManageElementsVisible(true);
     }
 
+
+
     @FXML
     void saveNameChange(MouseEvent event) {
-        
+
     }
 
     private void populateTextFieldCadets(){
@@ -286,6 +288,10 @@ public class AdminSettingsController {
         textFieldsCadets.add(20, text20);
 
     }
+
+
+
+
 
     private void setCreateElementsVisible(boolean isVisible) {
         totalOfCadets.setVisible(isVisible);
