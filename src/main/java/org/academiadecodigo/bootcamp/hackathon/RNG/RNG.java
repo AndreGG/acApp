@@ -5,6 +5,10 @@ package org.academiadecodigo.bootcamp.hackathon.RNG;
  */
 public final class RNG {
 
+    public static int getRandomNumber(int number) {
+        return (int)(Math.random() * number);
+    }
+
     public static int roll() {
         return (int)(Math.random() * 100);
     }

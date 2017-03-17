@@ -9,7 +9,7 @@ public class Cadet {
     private String name;
     private boolean availableToSummerize;
     private int currentSeat;
-    private int numberOfBootcamp;
+    private Bootcamp bootcamp;
 
     public int getId() {
         return id;
@@ -43,11 +43,11 @@ public class Cadet {
         this.currentSeat = currentSeat;
     }
 
-    public int getNumberOfBootcamp() {
-        return numberOfBootcamp;
+    public Bootcamp getBootcamp() {
+        return bootcamp;
     }
 
-    public void setNumberOfBootcamp(int numberOfBootcamp) {
-        this.numberOfBootcamp = numberOfBootcamp;
+    public void setBootcamp(Bootcamp bootcamp) {
+        this.bootcamp = bootcamp;
     }
 }

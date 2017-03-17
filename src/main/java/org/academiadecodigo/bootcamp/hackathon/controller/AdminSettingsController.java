@@ -206,7 +206,7 @@ public class AdminSettingsController {
 
     @FXML
     void submitNewBootcamp(MouseEvent event) {
-        
+
     }
 
     @FXML
