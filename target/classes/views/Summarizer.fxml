@@ -2,6 +2,7 @@
 
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
+<<<<<<< HEAD
 <?import javafx.scene.effect.Lighting?>
 <?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
@@ -63,5 +64,75 @@
             </ImageView>
          </children>
       </Group>
+=======
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.effect.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.academiadecodigo.bootcamp.hackathon.controller.SummarizerController">
+   <children>
+      <BorderPane prefHeight="400.0" prefWidth="610.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="606.0" fitWidth="800.0">
+                     <image>
+                        <Image url="@../summarizer.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="144.0" fitWidth="139.0" layoutY="14.0">
+                     <image>
+                        <Image url="@../box.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="69.0" fitWidth="200.0" layoutX="205.0" layoutY="170.0">
+                     <image>
+                        <Image url="@../logo.png" />
+                     </image>
+                  </ImageView>
+                  <Group fx:id="wheelOfFate" layoutX="403.0" layoutY="470.0" onKeyReleased="#spinWheel">
+                     <children>
+                        <Circle fill="#fafcfb" layoutX="-3.0" layoutY="10.0" opacity="0.78" radius="87.0" stroke="BLACK" strokeType="INSIDE" />
+                        <ImageView fitHeight="55.0" fitWidth="51.0" layoutX="-28.0" layoutY="-77.0">
+                           <image>
+                              <Image url="@../target.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="-52.0" layoutY="-22.0" text="CodeCadet">
+                           <font>
+                              <Font name="Inconsolata" size="22.0" />
+                           </font>
+                           <effect>
+                              <Lighting>
+                                 <bumpInput>
+                                    <Shadow />
+                                 </bumpInput>
+                                 <light>
+                                    <Light.Distant/>
+                                 </light>
+                              </Lighting>
+                           </effect>
+                        </Label>
+                        <ImageView fitHeight="55.0" fitWidth="51.0" layoutX="-28.0" layoutY="42.0" rotate="180.0">
+                           <image>
+                              <Image url="@../target.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="-52.0" layoutY="18.0" rotate="180.0" text="CodeCadet">
+                           <font>
+                              <Font name="Inconsolata" size="22.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Group>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+>>>>>>> 4742001e32327f56c5c3ffe63e4cd26169e29262
    </children>
 </AnchorPane>
