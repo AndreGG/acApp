@@ -18,6 +18,7 @@ import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+
 /**
  * Created by codecadet on 3/16/17.
  */
@@ -55,9 +56,9 @@ public class mainTest extends Application{
         HibernateBootcampDao bootcampDao = new HibernateBootcampDao();
         HibernateCadetDao cadetDao = new HibernateCadetDao();
         HibernateSummarizerDao summarizerDao = new HibernateSummarizerDao();
-        TransactionManager hibernateTransactionManage = new HibernateTransactionManager();
+        TransactionManager transactionManager = new HibernateTransactionManager();
 
-        hibernateTransactionManage.beginTransaction();
+        transactionManager.beginTransaction();
 
         bootcampDao.create(bootcamp);
 
@@ -66,10 +67,10 @@ public class mainTest extends Application{
 
         summarizerDao.create(summarizer1);
 
-        hibernateTransactionManage.commitTransaction();
+        transactionManager.commitTransaction();
 
-        SeatTestService seatTestService = new SeatTestService(cadetDao, hibernateTransactionManage);
-        ServiceRegistry.getInstance().registerService(seatTestService);
+        SeatTestService service = new SeatTestService(cadetDao, transactionManager);
+        ServiceRegistry.getInstance().registerService(service);
 
     }
 
@@ -77,7 +78,7 @@ public class mainTest extends Application{
     public void start(Stage primaryStage) throws Exception {
 
         Navigator.getInstance().setStage(primaryStage);
-        Navigator.getInstance().loadScreen("seating");
+        Navigator.getInstance().loadScreen("AdminView");
 
     }
 

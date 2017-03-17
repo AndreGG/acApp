@@ -35,7 +35,6 @@
 .button:pressed {
     -fx-background-color: #A61412;
 }
-<<<<<<< HEAD
 
 .button-item {
   -fx-background-color: #000000;
@@ -60,5 +59,4 @@
 .context-menu{
   -fx-background-color: #222222;
 }
-=======
->>>>>>> controllers
+
