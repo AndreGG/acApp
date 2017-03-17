@@ -32,16 +32,22 @@ public class SettingsFileHandler {
 
     public String getSettings() {
 
+        FileReader fileReader = null;
+        BufferedReader bReader = null;
+
         try {
 
-            FileReader fileReader = new FileReader(settingsFile.getPath());
-            BufferedReader bReader = new BufferedReader(fileReader);
+            fileReader = new FileReader(settingsFile.getPath());
+            bReader = new BufferedReader(fileReader);
 
             String settingsLine = null;
 
             while((settingsLine = bReader.readLine()) != null) {
-                settings += settingsLine;
+                settings += settingsLine + "\r\n";
             }
+
+            fileReader.close();
+            bReader.close();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -54,19 +60,23 @@ public class SettingsFileHandler {
 
     public void writeDefaultSettings() {
 
+            PrintWriter pWriter = null;
+
         try {
 
-            PrintWriter pWriter = new PrintWriter(settingsFile.getPath());
+            pWriter = new PrintWriter(settingsFile.getPath());
 
-            pWriter.write(SettingsMessages.bootcamp + SettingsMessages.defaultValue);
-            pWriter.write(SettingsMessages.seatsByRow + SettingsMessages.defaultSeatNumber);
+            pWriter.write(SettingsMessages.bootcamp + SettingsMessages.defaultValue + "\r\n");
 
             pWriter.flush();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
+        } finally {
+            if(pWriter != null) {
+                pWriter.close();
+            }
         }
 
     }
-
 }
