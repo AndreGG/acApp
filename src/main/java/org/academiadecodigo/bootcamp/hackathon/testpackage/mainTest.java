@@ -19,7 +19,7 @@ public class mainTest extends Application{
     public void start(Stage primaryStage) throws Exception {
 
         Navigator.getInstance().setStage(primaryStage);
-        Navigator.getInstance().loadScreen("AdminView");
+        Navigator.getInstance().loadScreen("seating");
 
     }
 

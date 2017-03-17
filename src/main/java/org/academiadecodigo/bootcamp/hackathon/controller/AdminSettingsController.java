@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp.hackathon.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -16,8 +17,9 @@ import org.academiadecodigo.bootcamp.hackathon.services.AdminService;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class AdminSettingsController {
+public class AdminSettingsController implements Controller {
 
     private AdminService adminService;
 
@@ -350,5 +352,20 @@ public class AdminSettingsController {
         bootcampList.setVisible(isVisible);
         newName.setVisible(isVisible);
         changeNameButton.setVisible(isVisible);
+    }
+
+    @Override
+    public void initialize() {
+
+    }
+
+    @Override
+    public void addEventHandler(Scene scene) {
+
+    }
+
+    @Override
+    public void setServices() {
+
     }
 }
