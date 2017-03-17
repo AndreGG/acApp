@@ -20,7 +20,7 @@ import java.util.TimerTask;
 
 public class SummarizerController implements Controller {
 
-    private final int ROTATION_DURATION = 6;
+    private final int ROTATION_DURATION = 10;
     private int rotateValue = 0;
     private int rotationDuration = 0;
     private boolean spinning = false;
@@ -132,13 +132,14 @@ public class SummarizerController implements Controller {
                     wheelOfFate.setRotate(wheelOfFate.getRotate() + rotateValue);
 
                     if (wheelOfFate.getRotate() >= 360) {
+
                         wheelOfFate.setRotate(0);
-                        System.out.println("here before cancel");
-                        System.out.println(spinning);
+
                         if(!spinning) {
                             System.out.println("here at cancel");
                             this.cancel();
                         }
+
                     }
                 }
 
@@ -153,7 +154,7 @@ public class SummarizerController implements Controller {
             public void run() {
                 rotationDuration++;
 
-                if(rotationDuration == ROTATION_DURATION - 2) {
+                if(rotationDuration == ROTATION_DURATION / 2) {
                     slowDown = true;
                 }
 

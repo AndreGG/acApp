@@ -5,6 +5,4 @@ package org.academiadecodigo.bootcamp.hackathon.persistence.file;
  */
 public class MasterCoderRiggedSeats {
 
-
-
 }
