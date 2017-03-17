@@ -17,9 +17,9 @@ public class ServiceInitializer {
     public void init() {
 
         HibernateSessionManager hibernateManager = new HibernateSessionManager();
-        CadetDao cadetDAO = new HibernateCadetDao(hibernateManager);
+        //CadetDao cadetDAO = new HibernateCadetDao(hibernateManager);
         //BootcampDao bootcampDAO = new HibernateBootcampDao(hibernateManager);
-        SummarizerDao summarizerDao = new HibernateSummarizerDao(hibernateManager);
+        //SummarizerDao summarizerDao = new HibernateSummarizerDao(hibernateManager);
 
         //ServiceRegistry.getInstance().registerService();
 

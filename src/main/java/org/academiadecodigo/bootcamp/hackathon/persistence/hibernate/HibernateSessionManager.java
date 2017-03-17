@@ -30,7 +30,8 @@ public class HibernateSessionManager implements DBConnectionManager, Transaction
                     .buildSessionFactory();
 
         } catch (HibernateException hex) {
-
+            hex.getMessage();
+            hex.printStackTrace();
         }
 
     }
