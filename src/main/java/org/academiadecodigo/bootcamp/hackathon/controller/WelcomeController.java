@@ -47,7 +47,7 @@ public class WelcomeController implements Controller{
     }
 
     @FXML
-    void showSeating(MouseEvent event) {
+    void showSeating(ActionEvent event) {
         Navigator.getInstance().loadScreen("seating");
     }
 
