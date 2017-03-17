@@ -31,11 +31,11 @@ public class seatingController implements Controller {
 
     @FXML
     public void initialize() {
-//        seatTestService = (SeatTestService) ServiceRegistry.getInstance().getService(SeatTestService.class);
-//
-//        columnCadets.setCellValueFactory(new PropertyValueFactory<>("name"));
-//
-//        cadetsList.getItems().setAll(seatTestService.findAll());
+        seatTestService = (SeatTestService) ServiceRegistry.getInstance().getService(SeatTestService.class);
+
+        columnCadets.setCellValueFactory(new PropertyValueFactory<>("name"));
+
+        cadetsList.getItems().setAll(seatTestService.findAll());
     }
 
     @Override
