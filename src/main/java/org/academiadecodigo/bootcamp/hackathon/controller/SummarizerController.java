@@ -226,5 +226,10 @@ public class SummarizerController implements Controller {
     public void setServices() {
 
     }
+
+    @Override
+    public void manageAssets() {
+
+    }
 }
 

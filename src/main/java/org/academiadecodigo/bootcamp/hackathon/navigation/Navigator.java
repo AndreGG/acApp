@@ -61,9 +61,8 @@ public final class Navigator {
             // Create a new scene and add it to the stack
             Scene scene = new Scene(root);
 
-            if(view.equals("Summarizer")) {
-                c.addEventHandler(scene);
-            }
+            c.addEventHandler(scene);
+            c.manageAssets();
 
             scenes.push(scene);
 

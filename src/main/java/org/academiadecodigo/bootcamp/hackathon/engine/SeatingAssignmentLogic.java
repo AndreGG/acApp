@@ -5,26 +5,35 @@ import org.academiadecodigo.bootcamp.hackathon.model.Cadet;
 import org.academiadecodigo.bootcamp.hackathon.model.dao.BootcampDao;
 import org.academiadecodigo.bootcamp.hackathon.model.dao.CadetDao;
 import org.academiadecodigo.bootcamp.hackathon.persistence.file.SettingsFileHandler;
+import org.academiadecodigo.bootcamp.hackathon.persistence.hibernate.HibernateSessionManager;
+import org.academiadecodigo.bootcamp.hackathon.services.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by codecadet on 3/16/17.
  */
-public class SeatingAssignmentLogic {
+public class SeatingAssignmentLogic implements Service {
 
     private CadetDao cadetDao;
     private BootcampDao bootcampDao;
-    private List<Cadet> cadets;
+    private Set<Cadet> cadets;
     private HashMap<Integer, String> riggedSeats;
     private int seatsByRow;
+    private HibernateSessionManager manager;
 
     public SeatingAssignmentLogic(CadetDao cadetDao, BootcampDao bootcamp) {
 
         this.cadetDao = cadetDao;
         this.bootcampDao = bootcamp;
-        //this.cadets = bootcampDao.getCadets();
+
+        HibernateSessionManager.beginTransaction();
+        this.cadets = bootcampDao.getCadets("Javangers");
+        HibernateSessionManager.commitTransaction();
+        riggedSeats = new HashMap<>();
 
     }
 
@@ -73,4 +82,8 @@ public class SeatingAssignmentLogic {
         return rigged;
     }
 
+    @Override
+    public Class getServiceClass() {
+        return SeatingAssignmentLogic.class;
+    }
 }

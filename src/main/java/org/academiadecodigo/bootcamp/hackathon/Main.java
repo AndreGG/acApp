@@ -18,7 +18,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         Navigator.getInstance().setStage(primaryStage);
-        Navigator.getInstance().loadScreen("seating");
+        Navigator.getInstance().loadScreen("Summarizer");
 
     }
 
