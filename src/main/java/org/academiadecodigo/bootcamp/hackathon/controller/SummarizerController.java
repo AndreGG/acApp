@@ -1,10 +1,17 @@
 package org.academiadecodigo.bootcamp.hackathon.controller;
 
+import javafx.application.Platform;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.concurrent.Task;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
 import org.academiadecodigo.bootcamp.hackathon.navigation.Navigator;
@@ -29,6 +36,8 @@ public class SummarizerController implements Controller {
     private TimerTask incrementingTask;
     private TimerTask rotationTask;
     private boolean slowDown;
+    private String[] cadetArray = new String[]{"Chapa", "Toto", "André", "Luizord",
+            "Camps", "Alexandre", "Boni", "Vero", "Micael", "Amarals", "Branco"};
 
     @FXML
     private ImageView logo;
@@ -37,14 +46,39 @@ public class SummarizerController implements Controller {
     private Group wheelOfFate;
 
     @FXML
+    private Label topCadetName;
+
+    @FXML
+    private Label bottomCadetName;
+
+    @FXML
     void showSettings(MouseEvent event) {
 
     }
 
+    private boolean changed = false;
+    private DoubleProperty amountDue = new SimpleDoubleProperty();
+
+    public void setAmountDue(double amountDue) {
+        this.amountDue.set(amountDue);
+    }
+
+
     public void initialize() {
+
 
         spinningTimer = new Timer();
         slowDown = false;
+
+        amountDue.addListener(new ChangeListener() {
+            @Override
+            public void changed(ObservableValue o, Object oldVal,
+                                Object newVal) {
+                System.out.println("Electric bill has changed!");
+                //topCadetName.setText(cadetArray[(int) Math.floor(Math.random() * cadetArray.length)]);
+
+            }
+        });
 
     }
 
@@ -108,13 +142,13 @@ public class SummarizerController implements Controller {
 
                 if (slowDown) {
 
-                    if(rotateValue > 1) {
+                    if (rotateValue > 1) {
                         rotateValue--;
                     }
 
                 } else if (!slowDown) {
 
-                    if(rotateValue < 10) {
+                    if (rotateValue < 10) {
                         rotateValue++;
                     }
 
@@ -131,12 +165,32 @@ public class SummarizerController implements Controller {
                 synchronized (wheelOfFate) {
                     wheelOfFate.setRotate(wheelOfFate.getRotate() + rotateValue);
 
+                    if(wheelOfFate.getRotate() == 180) {
+
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                topCadetName.setText(cadetArray[(int) Math.floor(Math.random() * cadetArray.length)]);
+                            }
+                        });
+
+                    }
+
                     if (wheelOfFate.getRotate() >= 360) {
 
                         wheelOfFate.setRotate(0);
 
-                        if(!spinning) {
-                            System.out.println("here at cancel");
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                bottomCadetName.setText(cadetArray[(int) Math.floor(Math.random() * cadetArray.length)]);
+                            }
+                        });
+
+                        //topCadetName.setText(cadetArray[(int) Math.floor(Math.random() * cadetArray.length)]);
+                        //setAmountDue(50);
+
+                        if (!spinning) {
                             this.cancel();
                         }
 
@@ -154,11 +208,11 @@ public class SummarizerController implements Controller {
             public void run() {
                 rotationDuration++;
 
-                if(rotationDuration == ROTATION_DURATION / 2) {
+                if (rotationDuration == ROTATION_DURATION / 2) {
                     slowDown = true;
                 }
 
-                if(rotationDuration >= ROTATION_DURATION) {
+                if (rotationDuration >= ROTATION_DURATION) {
                     incrementingTask.cancel();
                     rotationDuration = 0;
                     spinning = false;
