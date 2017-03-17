@@ -2,6 +2,7 @@
 
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Label?>
+<<<<<<< HEAD
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -70,5 +71,68 @@
             </AnchorPane>
          </center>
       </BorderPane>
+=======
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="400.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="408.0" fitWidth="610.0">
+         <image>
+            <Image url="@../summarizer.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="69.0" fitWidth="200.0" layoutX="193.0" layoutY="143.0">
+         <image>
+            <Image url="@../logo.png" />
+         </image>
+      </ImageView>
+      <Group layoutX="303.0" layoutY="303.0">
+         <children>
+            <Circle fill="#fafcfb" layoutX="-3.0" layoutY="10.0" opacity="0.78" radius="87.0" stroke="BLACK" strokeType="INSIDE" />
+            <ImageView fitHeight="55.0" fitWidth="51.0" layoutX="-28.0" layoutY="-77.0">
+               <image>
+                  <Image url="@../target.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="-52.0" layoutY="-22.0" text="CodeCadet">
+               <font>
+                  <Font name="Inconsolata" size="22.0" />
+               </font>
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                        <Light.Distant />
+                     </light>
+                  </Lighting>
+               </effect>
+            </Label>
+            <ImageView fitHeight="55.0" fitWidth="51.0" layoutX="-28.0" layoutY="42.0" rotate="180.0">
+               <image>
+                  <Image url="@../target.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="-52.0" layoutY="18.0" rotate="180.0" text="CodeCadet">
+               <font>
+                  <Font name="Inconsolata" size="22.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="144.0" fitWidth="139.0" layoutX="-72.0" layoutY="-22.0">
+               <image>
+                  <Image url="@../box.png" />
+               </image>
+            </ImageView>
+         </children>
+      </Group>
+>>>>>>> dev
    </children>
 </AnchorPane>
