@@ -5,20 +5,17 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.*;
+import org.academiadecodigo.bootcamp.hackathon.AudioManager;
 import org.academiadecodigo.bootcamp.hackathon.navigation.Navigator;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -66,7 +63,6 @@ public class SummarizerController implements Controller {
 
 
     public void initialize() {
-
 
         spinningTimer = new Timer();
         slowDown = false;
@@ -125,6 +121,7 @@ public class SummarizerController implements Controller {
                 switch (event.getCode()) {
                     case SPACE:
                         spinWheel();
+                        AudioManager.start("twilight");
                     default:
                         System.out.println(event.getCode() + " tou dentro");
                         break;
@@ -192,6 +189,7 @@ public class SummarizerController implements Controller {
                         //setAmountDue(50);
 
                         if (!spinning) {
+                            AudioManager.start("coyote");
                             this.cancel();
                         }
 
@@ -229,21 +227,25 @@ public class SummarizerController implements Controller {
     }
 
     public void skipToSummarizer(ActionEvent actionEvent) {
+        AudioManager.stopAll();
         Navigator.getInstance().loadScreen("summarizer_dum");
     }
 
 
     public void skipToSeating(ActionEvent actionEvent) {
+        AudioManager.stopAll();
         Navigator.getInstance().loadScreen("Seating");
     }
 
 
     public void exitProgram(ActionEvent actionEvent) {
+        AudioManager.stopAll();
         System.exit(0);
     }
 
 
     public void skipToCredits(ActionEvent actionEvent) {
+        AudioManager.stopAll();
         Navigator.getInstance().loadScreen("credits");
     }
 }

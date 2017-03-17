@@ -7,6 +7,7 @@ package org.academiadecodigo.bootcamp.hackathon.controller;
         import javafx.scene.control.MenuItem;
         import javafx.scene.image.ImageView;
         import javafx.scene.input.MouseEvent;
+        import org.academiadecodigo.bootcamp.hackathon.AudioManager;
         import org.academiadecodigo.bootcamp.hackathon.navigation.Navigator;
 
 public class WelcomeController implements Controller{
@@ -76,7 +77,7 @@ public class WelcomeController implements Controller{
 
     @Override
     public void initialize() {
-
+        AudioManager.load(new String[]{"twilight", "coyote", "drums", "tadaaa"});
     }
 
     @Override
