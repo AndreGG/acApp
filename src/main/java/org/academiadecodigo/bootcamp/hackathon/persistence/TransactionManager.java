@@ -5,10 +5,10 @@ package org.academiadecodigo.bootcamp.hackathon.persistence;
  */
 public interface TransactionManager {
 
-    public void beginTransaction();
+    void beginTransaction();
 
-    public void commitTransaction();
+    void commitTransaction();
 
-    public void rollbackTransaction();
+    void rollbackTransaction();
 
 }

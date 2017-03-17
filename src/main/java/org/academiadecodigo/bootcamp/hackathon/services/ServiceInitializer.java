@@ -12,22 +12,20 @@ import org.academiadecodigo.bootcamp.hackathon.persistence.hibernate.HibernateSe
  */
 public class ServiceInitializer {
 
-    private DBConnectionManager dbConnectionManager;
 
     public void init() {
 
         HibernateSessionManager hibernateManager = new HibernateSessionManager();
-        CadetDao cadetDAO = new HibernateCadetDao();
-        BootcampDao bootcampDAO = new HibernateBootcampDao();
-        SummarizerDao summarizerDao = new HibernateSummarizerDao();
+        //CadetDao cadetDAO = new HibernateCadetDao(hibernateManager);
+        //BootcampDao bootcampDAO = new HibernateBootcampDao(hibernateManager);
+        //SummarizerDao summarizerDao = new HibernateSummarizerDao(hibernateManager);
 
-        ServiceRegistry.getInstance().registerService();
+        //ServiceRegistry.getInstance().registerService();
 
-        this.dbConnectionManager = hibernateManager;
     }
 
     public void stopServices() {
-        dbConnectionManager.close();
+        
     }
 
 }

@@ -1,5 +1,19 @@
 <hibernate-mapping>
 
+    <class name="org.academiadecodigo.bootcamp.hackathon.model.Bootcamp" table="bootcamps">
+
+        <id name="id" column="bootcamp_id">
+            <generator class="identity"/>
+        </id>
+
+        <property name="name" column="name" type="string"/>
+        <set name="cadets" cascade="all" inverse="false" lazy="false">
+            <key column="bootcamp_id" not-null="false"/>
+            <one-to-many class="org.academiadecodigo.bootcamp.hackathon.model.Cadet"/>
+        </set>
+
+    </class>
+
     <class name="org.academiadecodigo.bootcamp.hackathon.model.Cadet" table="cadets">
 
         <id name="id" column="cadet_id">
@@ -9,22 +23,8 @@
         <property name="name" column="name" type="string"/>
         <property name="availableToSummerize" type="boolean"/>
         <property name="currentSeat" type="int"/>
-        <many-to-one class="org.academiadecodigo.bootcamp.hackathon.model.Bootcamp" name="numberOfBootcamp" column="bootcamp_id"
-                     not-null="true" cascade="all"/>
-
-    </class>
-
-    <class name="org.academiadecodigo.bootcamp.hackathon.model.Bootcamp" table="bootcamps">
-
-        <id name="id" column="bootcamp_id">
-            <generator class="identity"/>
-        </id>
-
-        <property name="name" column="name" type="string"/>
-        <set name="cadets" cascade="all">
-            <key column="bootcamp_id" not-null="true"/>
-            <one-to-many class="org.academiadecodigo.bootcamp.hackathon.model.Cadet"/>
-        </set>
+        <many-to-one class="org.academiadecodigo.bootcamp.hackathon.model.Bootcamp" name="bootcamp" column="bootcamp_id"
+                     not-null="false" cascade="all"/>
 
     </class>
 
@@ -41,17 +41,17 @@
 
     </class>
 
-    <class name="org.academiadecodigo.bootcamp.hackathon.model.Homework" table="homeworks">
+    <!--<class name="org.academiadecodigo.bootcamp.hackathon.model.Homework" table="homeworks">-->
 
-        <id name="id" column="homework_id">
-            <generator class="identity"/>
-        </id>
+        <!--<id name="id" column="homework_id">-->
+            <!--<generator class="identity"/>-->
+        <!--</id>-->
 
-        <property name="date" column="date" type="date"/>
-        <property name="subject" column="subject" type="string"/>
-        <many-to-one class="org.academiadecodigo.bootcamp.hackathon.model.Cadet" name="cadetAssigned"
-                     not-null="true" cascade="all"/>
+        <!--<property name="date" column="date" type="date"/>-->
+        <!--<property name="subject" column="subject" type="string"/>-->
+        <!--<many-to-one class="org.academiadecodigo.bootcamp.hackathon.model.Cadet" name="cadetAssigned"-->
+                     <!--not-null="true" cascade="all"/>-->
 
-    </class>
+    <!--</class>-->
 
 </hibernate-mapping>
