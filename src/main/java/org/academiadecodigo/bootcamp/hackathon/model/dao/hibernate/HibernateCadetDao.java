@@ -16,10 +16,11 @@ import java.util.List;
  */
 public class HibernateCadetDao extends HibernateDao<Cadet> implements CadetDao {
 
+    private HibernateSessionManager manager;
 
-
-    public HibernateCadetDao() {
+    public HibernateCadetDao(HibernateSessionManager manager) {
         super(Cadet.class);
+        this.manager = manager;
     }
 
 
@@ -27,7 +28,7 @@ public class HibernateCadetDao extends HibernateDao<Cadet> implements CadetDao {
     public Cadet findByName(String cadetName) {
         try {
 
-            Session session = HibernateSessionManager.getSession();
+            Session session = manager.getSession();
             Query q = session.createQuery("from Cadet where name = :cadetName");
             q.setString("cadetName", cadetName);
             Cadet cadet = (Cadet) q.uniqueResult();

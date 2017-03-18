@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp.hackathon.persistence.hibernate;
 
 import org.academiadecodigo.bootcamp.hackathon.persistence.DBConnectionManager;
+import org.academiadecodigo.bootcamp.hackathon.persistence.TransactionException;
 import org.academiadecodigo.bootcamp.hackathon.persistence.TransactionManager;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -12,11 +13,11 @@ import org.hibernate.service.ServiceRegistry;
 /**
  * Created by codecadet on 3/16/17.
  */
-public class HibernateSessionManager {
+public class HibernateSessionManager implements DBConnectionManager, TransactionManager {
 
     private static SessionFactory sessionFactory;
 
-    static {
+    public HibernateSessionManager() {
         // hibernate initialization code
         try {
 
@@ -30,33 +31,32 @@ public class HibernateSessionManager {
                     .buildSessionFactory();
 
         } catch (HibernateException ex) {
-            ex.printStackTrace();
-            throw new ExceptionInInitializerError("Error creating hibernate session factory: " + ex.getMessage());
+            throw new TransactionException(ex);
         }
 
     }
 
-    public static void beginTransaction() {
+    public void beginTransaction() {
         Session session = getSession();
         session.beginTransaction();
     }
 
-    public static void commitTransaction() {
+    public void commitTransaction() {
         getSession().getTransaction().commit();
     }
 
-    public static void rollbackTransaction() {
+    public void rollbackTransaction() {
         getSession().getTransaction().rollback();
     }
 
-    public static Session getSession() {
+    public Session getSession() {
         // Hibernate will automatically open a new session if needed
         // Closing the session is not required
         return sessionFactory.getCurrentSession();
     }
 
     // Required to stop hibernate and allow the application to terminate
-    public static void close() {
+    public void close() {
         sessionFactory.close();
     }
 

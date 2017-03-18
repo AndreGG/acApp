@@ -17,14 +17,17 @@ import java.util.Set;
  */
 public class HibernateBootcampDao extends HibernateDao<Bootcamp> implements BootcampDao {
 
-    public HibernateBootcampDao() {
+    private HibernateSessionManager manager;
+
+    public HibernateBootcampDao(HibernateSessionManager manager) {
         super(Bootcamp.class);
+        this.manager = manager;
     }
 
     public Bootcamp findByName(String name) {
         try {
 
-            Session session = HibernateSessionManager.getSession();
+            Session session = manager.getSession();
             Query q = session.createQuery("from Bootcamp where name = :name");
 
             q.setString("name", String.valueOf(name));
@@ -44,7 +47,7 @@ public class HibernateBootcampDao extends HibernateDao<Bootcamp> implements Boot
 
         try {
 
-            Session session = HibernateSessionManager.getSession();
+            Session session = manager.getSession();
             Query q = session.createQuery("from Bootcamp where name = :name");
             q.setString("name", name);
             e = (Bootcamp)q.uniqueResult();

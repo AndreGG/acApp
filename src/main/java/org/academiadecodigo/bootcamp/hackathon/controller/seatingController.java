@@ -12,11 +12,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import org.academiadecodigo.bootcamp.hackathon.AudioManager;
-import org.academiadecodigo.bootcamp.hackathon.engine.SeatingAssignmentLogic;
-import org.academiadecodigo.bootcamp.hackathon.engine.seats.Seat;
+import org.academiadecodigo.bootcamp.hackathon.engine.SeatingLogic;
 import org.academiadecodigo.bootcamp.hackathon.model.Cadet;
-import org.academiadecodigo.bootcamp.hackathon.model.dao.hibernate.HibernateCadetDao;
 import org.academiadecodigo.bootcamp.hackathon.navigation.Navigator;
+import org.academiadecodigo.bootcamp.hackathon.services.BootcampService;
 import org.academiadecodigo.bootcamp.hackathon.services.SeatTestService;
 import org.academiadecodigo.bootcamp.hackathon.services.ServiceRegistry;
 
@@ -30,8 +29,9 @@ import java.util.Iterator;
 public class SeatingController implements Controller {
 
     private SeatTestService seatTestService;
+    private BootcampService bootS;
     private ArrayList<Cadet> cadets;
-    private SeatingAssignmentLogic sal;
+    private SeatingLogic sal;
     private ArrayList<Label> labelArray;
     private int currentSeat = 0;
     private Iterator<Label> iterator;
@@ -80,7 +80,7 @@ public class SeatingController implements Controller {
     @FXML
     public void initialize() {
 
-        setServices();
+        setInjections();
         seatTestService = (SeatTestService) ServiceRegistry.getInstance().getService(SeatTestService.class);
         columnCadets.setCellValueFactory(new PropertyValueFactory<>("name"));
         cadetsList.getItems().setAll(seatTestService.findAll());
@@ -106,7 +106,7 @@ public class SeatingController implements Controller {
                         break;
                     default:
                         AudioManager.loop("drums", 5);
-                        System.out.println(event.getCode() + " tou dentro");
+                        System.out.println(event.getCode() + "" + this.getClass().getSimpleName());
                         break;
                 }
             }
@@ -122,7 +122,7 @@ public class SeatingController implements Controller {
                         assignSeat();
                         break;
                     default:
-                        System.out.println(event.getCode() + " tou dentro");
+                        System.out.println(event.getCode() + "" + this.getClass().getSimpleName());
                         break;
                 }
             }
@@ -130,8 +130,11 @@ public class SeatingController implements Controller {
     }
 
     @Override
-    public void setServices() {
-        this.sal = (SeatingAssignmentLogic)ServiceRegistry.getInstance().getService(SeatingAssignmentLogic.class);
+    public void setInjections() {
+
+        this.sal = new SeatingLogic();
+
+
     }
 
     public void assignSeat() {

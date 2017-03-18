@@ -11,12 +11,9 @@ import org.academiadecodigo.bootcamp.hackathon.testpackage.SQLLoader;
  */
 public class Main extends Application {
 
-
-
     @Override
     public void init() {
 
-        SQLLoader sqlLoader = new SQLLoader();
         ServiceInitializer serviceInitializer = new ServiceInitializer();
         serviceInitializer.init();
 

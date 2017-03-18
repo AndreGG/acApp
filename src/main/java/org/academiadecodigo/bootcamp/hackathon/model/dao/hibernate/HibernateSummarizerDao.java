@@ -15,14 +15,17 @@ import java.sql.Date;
  */
 public class HibernateSummarizerDao extends HibernateDao<Summarizer> implements SummarizerDao {
 
-    public HibernateSummarizerDao() {
+    private HibernateSessionManager manager;
+
+    public HibernateSummarizerDao(HibernateSessionManager manager) {
         super(Summarizer.class);
+        this.manager = manager;
     }
 
     public Summarizer findByDate(Date date) {
         try {
 
-            Session session = HibernateSessionManager.getSession();
+            Session session = manager.getSession();
             Query q = session.createQuery("from Summarizer where date = :date");
             q.setString("date", String.valueOf(date));
             Summarizer summarizer = (Summarizer) q.uniqueResult();

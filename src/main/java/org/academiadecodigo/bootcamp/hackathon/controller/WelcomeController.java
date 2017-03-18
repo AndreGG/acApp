@@ -85,7 +85,7 @@ public class WelcomeController implements Controller{
     }
 
     @Override
-    public void setServices() {
+    public void setInjections() {
 
     }
 

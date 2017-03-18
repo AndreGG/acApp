@@ -1,42 +1,37 @@
 package org.academiadecodigo.bootcamp.hackathon.services;
 
-import org.academiadecodigo.bootcamp.hackathon.engine.SeatingAssignmentLogic;
 import org.academiadecodigo.bootcamp.hackathon.model.dao.*;
 import org.academiadecodigo.bootcamp.hackathon.model.dao.hibernate.HibernateBootcampDao;
 import org.academiadecodigo.bootcamp.hackathon.model.dao.hibernate.HibernateCadetDao;
 import org.academiadecodigo.bootcamp.hackathon.model.dao.hibernate.HibernateSummarizerDao;
 import org.academiadecodigo.bootcamp.hackathon.persistence.DBConnectionManager;
 import org.academiadecodigo.bootcamp.hackathon.persistence.hibernate.HibernateSessionManager;
-import org.academiadecodigo.bootcamp.hackathon.persistence.hibernate.HibernateTransactionManager;
 
 /**
  * Created by codecadet on 3/16/17.
  */
 public class ServiceInitializer {
 
+    private DBConnectionManager manager;
 
     public void init() {
 
-        HibernateTransactionManager hibernateTransactionManager = new HibernateTransactionManager();
-        CadetDao cadetDAO = new HibernateCadetDao();
-        BootcampDao bootcampDAO = new HibernateBootcampDao();
-        SummarizerDao summarizerDao = new HibernateSummarizerDao();
-        SeatingAssignmentLogic sal = new SeatingAssignmentLogic(cadetDAO, bootcampDAO);
+        HibernateSessionManager manager = new HibernateSessionManager();
 
-        AdminService adminService = new AdminService(bootcampDAO, hibernateTransactionManager);
-        SeatTestService seatTestService = new SeatTestService(cadetDAO,hibernateTransactionManager);
+        CadetDao cadetDAO = new HibernateCadetDao(manager);
+        BootcampDao bootcampDAO = new HibernateBootcampDao(manager);
+        SummarizerDao summarizerDao = new HibernateSummarizerDao(manager);
 
-        SeatTestService service = new SeatTestService(cadetDAO, hibernateTransactionManager);
-        ServiceRegistry.getInstance().registerService(service);
+        BootcampService bootS = new BootcampService(cadetDAO, summarizerDao, bootcampDAO, manager);
+        AdminService adminService = new AdminService(bootcampDAO, manager);
 
+        ServiceRegistry.getInstance().registerService(bootS);
         ServiceRegistry.getInstance().registerService(adminService);
-        ServiceRegistry.getInstance().registerService(sal);
 
-        System.out.println(ServiceRegistry.getInstance().getService(SeatingAssignmentLogic.class));
     }
 
     public void stopServices() {
-
+        manager.close();
     }
 
 }

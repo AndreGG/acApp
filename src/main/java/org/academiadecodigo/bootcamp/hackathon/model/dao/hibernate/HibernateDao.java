@@ -15,6 +15,7 @@ import java.util.List;
  */
 public abstract class HibernateDao<E> implements Dao<E> {
 
+    private HibernateSessionManager manager;
     private Class<E> eClass;
 
     public HibernateDao(Class eClass) {
@@ -24,7 +25,7 @@ public abstract class HibernateDao<E> implements Dao<E> {
     public void create(E e) {
         try {
 
-            HibernateSessionManager.getSession().save(e);
+            manager.getSession().save(e);
 
         } catch (HibernateException hex) {
             throw new TransactionException(hex);
@@ -35,7 +36,7 @@ public abstract class HibernateDao<E> implements Dao<E> {
     public void update(E e) {
         try {
 
-            HibernateSessionManager.getSession().saveOrUpdate(e);
+            manager.getSession().saveOrUpdate(e);
 
         } catch (HibernateException hex) {
             throw new TransactionException(hex);
@@ -46,7 +47,7 @@ public abstract class HibernateDao<E> implements Dao<E> {
     public void delete(E e) {
         try {
 
-            HibernateSessionManager.getSession().delete(e);
+            manager.getSession().delete(e);
 
         } catch (HibernateException hex) {
             throw new TransactionException(hex);
@@ -57,7 +58,7 @@ public abstract class HibernateDao<E> implements Dao<E> {
     public E findById(int id) {
         try {
 
-            Session session = HibernateSessionManager.getSession();
+            Session session = manager.getSession();
             Query q = session.createQuery("from " + eClass.getSimpleName() + " where id = :id");
             q.setString("id", String.valueOf(id));
             E e = (E) q.uniqueResult();
@@ -73,7 +74,7 @@ public abstract class HibernateDao<E> implements Dao<E> {
     public List<E> findAll() {
         try {
 
-            Session session = HibernateSessionManager.getSession();
+            Session session = manager.getSession();
             Query q = session.createQuery("from " + eClass.getSimpleName());
             List<E> e = q.list();
 
@@ -88,7 +89,7 @@ public abstract class HibernateDao<E> implements Dao<E> {
     public long count() {
         try {
 
-            Session session = HibernateSessionManager.getSession();
+            Session session = manager.getSession();
             long count = (long) session.createCriteria(eClass.getSimpleName())
                     .setProjection(Projections.rowCount())
                     .uniqueResult();

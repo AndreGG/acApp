@@ -222,7 +222,7 @@ public class SummarizerController implements Controller {
     }
 
     @Override
-    public void setServices() {
+    public void setInjections() {
 
     }
 

@@ -15,7 +15,11 @@ import java.util.Set;
  */
 public class SQLLoader {
 
-    public SQLLoader() {
+    private HibernateSessionManager manager;
+
+    public SQLLoader(HibernateSessionManager manager) {
+
+        this.manager = manager;
 
         Bootcamp bootcamp = new Bootcamp();
         bootcamp.setName("Javangers");
@@ -97,14 +101,6 @@ public class SQLLoader {
         }
 
         bootcamp.setCadets(cadets);
-
-        BootcampDao bootcampDao = new HibernateBootcampDao();
-
-        HibernateSessionManager.beginTransaction();
-
-        bootcampDao.create(bootcamp);
-
-        HibernateSessionManager.commitTransaction();
 
     }
 

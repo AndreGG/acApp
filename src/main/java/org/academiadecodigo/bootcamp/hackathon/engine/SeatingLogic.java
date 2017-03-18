@@ -2,10 +2,6 @@ package org.academiadecodigo.bootcamp.hackathon.engine;
 
 import org.academiadecodigo.bootcamp.hackathon.RNG.RNG;
 import org.academiadecodigo.bootcamp.hackathon.model.Cadet;
-import org.academiadecodigo.bootcamp.hackathon.model.dao.BootcampDao;
-import org.academiadecodigo.bootcamp.hackathon.model.dao.CadetDao;
-import org.academiadecodigo.bootcamp.hackathon.persistence.file.SettingsFileHandler;
-import org.academiadecodigo.bootcamp.hackathon.persistence.hibernate.HibernateSessionManager;
 import org.academiadecodigo.bootcamp.hackathon.services.Service;
 
 import java.util.*;
@@ -13,14 +9,13 @@ import java.util.*;
 /**
  * Created by codecadet on 3/16/17.
  */
-public class SeatingAssignmentLogic implements Service {
+public class SeatingLogic implements Service {
 
     private Set<Cadet> cadets;
     private Set<Cadet> backupCadets;
     private HashMap<Integer, String> riggedSeats;
-    private int seatsByRow;
 
-    public SeatingAssignmentLogic(Set<Cadet> cadets) {
+    public SeatingLogic(Set<Cadet> cadets) {
         this.cadets = cadets;
         backupCadets = new HashSet<>();
 
@@ -78,6 +73,9 @@ public class SeatingAssignmentLogic implements Service {
     }
 
     public int getCadetRow(double cadetSeat) {
+
+        int seatsByRow = 4;
+
         return (int)Math.ceil(cadetSeat/seatsByRow);
     }
 
@@ -90,6 +88,6 @@ public class SeatingAssignmentLogic implements Service {
 
     @Override
     public Class getServiceClass() {
-        return SeatingAssignmentLogic.class;
+        return SeatingLogic.class;
     }
 }
