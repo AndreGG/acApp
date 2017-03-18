@@ -20,10 +20,9 @@ public class SeatTestService implements Service{
     }
 
     public List<Cadet> findAll() {
+
         transactionManager.beginTransaction();
-
         List<Cadet> l = cadetDao.findAll();
-
         transactionManager.commitTransaction();
 
         return l;

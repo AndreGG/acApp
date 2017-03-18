@@ -5,27 +5,34 @@ import org.academiadecodigo.bootcamp.hackathon.model.Cadet;
 import org.academiadecodigo.bootcamp.hackathon.model.dao.BootcampDao;
 import org.academiadecodigo.bootcamp.hackathon.model.dao.CadetDao;
 import org.academiadecodigo.bootcamp.hackathon.persistence.file.SettingsFileHandler;
+import org.academiadecodigo.bootcamp.hackathon.persistence.hibernate.HibernateSessionManager;
+import org.academiadecodigo.bootcamp.hackathon.services.Service;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by codecadet on 3/16/17.
  */
-public class SeatingAssignmentLogic {
+public class SeatingAssignmentLogic implements Service {
 
-    private CadetDao cadetDao;
-    private BootcampDao bootcampDao;
-    private List<Cadet> cadets;
+    private Set<Cadet> cadets;
+    private Set<Cadet> backupCadets;
     private HashMap<Integer, String> riggedSeats;
     private int seatsByRow;
 
-    public SeatingAssignmentLogic(CadetDao cadetDao, BootcampDao bootcamp) {
+    public SeatingAssignmentLogic(Set<Cadet> cadets) {
+        this.cadets = cadets;
+        backupCadets = new HashSet<>();
 
-        this.cadetDao = cadetDao;
-        this.bootcampDao = bootcamp;
-        //this.cadets = bootcampDao.getCadets();
+        for(Cadet cadet: this.cadets) {
+            backupCadets.add(cadet);
+        }
+    }
 
+    public void resetCadetList() {
+        for(Cadet cadet: backupCadets) {
+            cadets.add(cadet);
+        }
     }
 
     public Cadet assignSeat(int seatNumber) {
@@ -40,15 +47,18 @@ public class SeatingAssignmentLogic {
 
         } else {
 
-            int highestRoll = 0;
-            assignedCadet = null;
+            double highestRoll = 0;
 
             for(Cadet cadet: cadets) {
 
                 double currentSeat = cadet.getCurrentSeat();
-                int chance = getCadetRow(currentSeat);
+                double chance = getCadetRow(currentSeat);
 
-                int cadetRoll = RNG.roll() * chance;
+                if (currentSeat == 0) {
+                    chance = 1;
+                }
+
+                double cadetRoll = (RNG.roll() * chance);
 
                 if(cadetRoll > highestRoll) {
                     highestRoll = cadetRoll;
@@ -59,6 +69,11 @@ public class SeatingAssignmentLogic {
         }
 
         cadets.remove(assignedCadet);
+
+        if(assignedCadet == null) {
+            resetCadetList();
+        }
+
         return assignedCadet;
     }
 
@@ -73,4 +88,8 @@ public class SeatingAssignmentLogic {
         return rigged;
     }
 
+    @Override
+    public Class getServiceClass() {
+        return SeatingAssignmentLogic.class;
+    }
 }

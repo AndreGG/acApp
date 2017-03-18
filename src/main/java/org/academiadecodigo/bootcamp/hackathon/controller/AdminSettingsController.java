@@ -23,8 +23,6 @@ public class AdminSettingsController implements Controller {
 
     private AdminService adminService;
 
-
-
     @FXML
     private MenuItem summarizer;
 
@@ -218,7 +216,7 @@ public class AdminSettingsController implements Controller {
 
     @FXML
     void showSummarizer(ActionEvent event) {
-        Navigator.getInstance().loadScreen("Summarizer");
+        Navigator.getInstance().loadScreen("summarizer_dum");
     }
 
     @FXML
@@ -267,6 +265,8 @@ public class AdminSettingsController implements Controller {
     void showManageElements(MouseEvent event) {
         setCreateElementsVisible(false);
         setManageElementsVisible(true);
+
+        bootcampList.getItems().addAll(adminService.getAllBootcampsByName());
     }
 
 
@@ -278,6 +278,14 @@ public class AdminSettingsController implements Controller {
         String newBootcampName = textBootcampNewName.getText();
 
         adminService.changeBootcampName(currentName, newBootcampName);
+
+        String current = bootcampList.getValue();
+        String newBootcamp = textBootcampNewName.getText();
+
+        adminService.changeBootcampName(current, newBootcamp);
+
+        Navigator.getInstance().loadScreen("AdminView");
+
     }
 
     private void populateTextFieldCadets(){
@@ -366,7 +374,7 @@ public class AdminSettingsController implements Controller {
     }
 
     public void skipToSummarizer(ActionEvent actionEvent) {
-        Navigator.getInstance().loadScreen("Summarizer");
+        Navigator.getInstance().loadScreen("summarizer_dum");
     }
 
 
@@ -398,6 +406,10 @@ public class AdminSettingsController implements Controller {
 
     @Override
     public void setServices() {
+
+    }
+
+    public void manageAssets() {
 
     }
 }

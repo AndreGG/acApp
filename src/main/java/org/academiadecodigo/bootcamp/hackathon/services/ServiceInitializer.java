@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.hackathon.services;
 
+import org.academiadecodigo.bootcamp.hackathon.engine.SeatingAssignmentLogic;
 import org.academiadecodigo.bootcamp.hackathon.model.dao.*;
 import org.academiadecodigo.bootcamp.hackathon.model.dao.hibernate.HibernateBootcampDao;
 import org.academiadecodigo.bootcamp.hackathon.model.dao.hibernate.HibernateCadetDao;
@@ -20,11 +21,18 @@ public class ServiceInitializer {
         CadetDao cadetDAO = new HibernateCadetDao();
         BootcampDao bootcampDAO = new HibernateBootcampDao();
         SummarizerDao summarizerDao = new HibernateSummarizerDao();
+        SeatingAssignmentLogic sal = new SeatingAssignmentLogic(cadetDAO, bootcampDAO);
 
         AdminService adminService = new AdminService(bootcampDAO, hibernateTransactionManager);
+        SeatTestService seatTestService = new SeatTestService(cadetDAO,hibernateTransactionManager);
+
+        SeatTestService service = new SeatTestService(cadetDAO, hibernateTransactionManager);
+        ServiceRegistry.getInstance().registerService(service);
 
         ServiceRegistry.getInstance().registerService(adminService);
+        ServiceRegistry.getInstance().registerService(sal);
 
+        System.out.println(ServiceRegistry.getInstance().getService(SeatingAssignmentLogic.class));
     }
 
     public void stopServices() {
