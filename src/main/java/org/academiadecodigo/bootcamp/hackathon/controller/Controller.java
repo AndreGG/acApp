@@ -11,6 +11,4 @@ public interface Controller {
 
     void addEventHandler(Scene scene);
 
-    void setInjections();
-
 }

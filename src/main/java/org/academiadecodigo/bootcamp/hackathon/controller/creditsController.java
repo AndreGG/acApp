@@ -60,7 +60,6 @@ public class CreditsController implements Controller{
 
     }
 
-    @Override
     public void setInjections() {
 
     }

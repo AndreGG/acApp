@@ -16,12 +16,16 @@ public class SeatingLogic implements Service {
     private HashMap<Integer, String> riggedSeats;
 
     public SeatingLogic(Set<Cadet> cadets) {
+
         this.cadets = cadets;
         backupCadets = new HashSet<>();
 
-        for(Cadet cadet: this.cadets) {
+        for(Cadet cadet: cadets) {
             backupCadets.add(cadet);
         }
+
+        riggedSeats = new HashMap<>();
+
     }
 
     public void resetCadetList() {
@@ -64,10 +68,6 @@ public class SeatingLogic implements Service {
         }
 
         cadets.remove(assignedCadet);
-
-        if(assignedCadet == null) {
-            resetCadetList();
-        }
 
         return assignedCadet;
     }

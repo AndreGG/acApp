@@ -34,12 +34,9 @@ public class AdminService implements Service {
         tx.beginTransaction();
 
         List<String> bootcampName = new LinkedList<>();
-
         List<Bootcamp> bootcamps = bootcampDao.findAll();
 
-
         for(int i = 0; i < bootcamps.size(); i++){
-
             bootcampName.add(bootcamps.get(i).getName());
         }
 
@@ -63,16 +60,11 @@ public class AdminService implements Service {
 
     public void createBootcamp(Bootcamp bootcamp) {
 
-        try {
             tx.beginTransaction();
 
             bootcampDao.create(bootcamp);
 
             tx.commitTransaction();
-        } catch (TransactionException ex) {
 
-            tx.rollbackTransaction();
-
-        }
     }
 }

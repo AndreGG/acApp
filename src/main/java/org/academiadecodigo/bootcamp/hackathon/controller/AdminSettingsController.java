@@ -404,11 +404,6 @@ public class AdminSettingsController implements Controller {
 
     }
 
-    @Override
-    public void setInjections() {
-
-    }
-
     public void manageAssets() {
 
     }

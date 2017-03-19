@@ -1,90 +1,86 @@
 package org.academiadecodigo.bootcamp.hackathon.controller;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.geometry.*;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
+import javafx.scene.text.TextAlignment;
+import javafx.stage.Screen;
 import org.academiadecodigo.bootcamp.hackathon.AudioManager;
 import org.academiadecodigo.bootcamp.hackathon.engine.SeatingLogic;
 import org.academiadecodigo.bootcamp.hackathon.model.Cadet;
 import org.academiadecodigo.bootcamp.hackathon.navigation.Navigator;
 import org.academiadecodigo.bootcamp.hackathon.services.BootcampService;
-import org.academiadecodigo.bootcamp.hackathon.services.SeatTestService;
 import org.academiadecodigo.bootcamp.hackathon.services.ServiceRegistry;
 
-import java.util.ArrayList;
 import java.util.Iterator;
-
+import java.util.Set;
 
 /**
  * Created by codecadet on 3/16/17.
  */
 public class SeatingController implements Controller {
 
-    private SeatTestService seatTestService;
     private BootcampService bootS;
-    private ArrayList<Cadet> cadets;
     private SeatingLogic sal;
-    private ArrayList<Label> labelArray;
     private int currentSeat = 0;
-    private Iterator<Label> iterator;
+    private Label[] labels;
 
     @FXML
     private ImageView logo;
     @FXML
     private GridPane seatingGrid;
-    @FXML
-    private TableView<Cadet> cadetsList;
-    @FXML
-    private TableColumn<Cadet, String> columnCadets;
-    @FXML
-    private Label seat1;
-    @FXML
-    private Label seat2;
-    @FXML
-    private Label seat3;
-    @FXML
-    private Label seat4;
-    @FXML
-    private Label seat5;
-    @FXML
-    private Label seat6;
-    @FXML
-    private Label seat7;
-    @FXML
-    private Label seat8;
-    @FXML
-    private Label seat9;
-    @FXML
-    private Label seat10;
-    @FXML
-    private Label seat11;
-    @FXML
-    private Label seat12;
-    @FXML
-    private Label seat13;
-    @FXML
-    private Label seat14;
-    @FXML
-    private Label seat15;
-    @FXML
-    private Label seat16;
 
     @FXML
     public void initialize() {
 
-        setInjections();
-        seatTestService = (SeatTestService) ServiceRegistry.getInstance().getService(SeatTestService.class);
-        columnCadets.setCellValueFactory(new PropertyValueFactory<>("name"));
-        cadetsList.getItems().setAll(seatTestService.findAll());
+        labels = new Label[16];
+        ImageView[] images = new ImageView[16];
+
+        ColumnConstraints columnConstraints = new ColumnConstraints();
+        columnConstraints.setHalignment(HPos.CENTER);
+
+        RowConstraints rowConstraints = new RowConstraints();
+        rowConstraints.setValignment(VPos.TOP);
+
+        for(int i = 0; i < labels.length; i++) {
+
+            labels[i] = new Label();
+            images[i] = new ImageView("\\Seat.png");
+            Image image = new Image("\\Seat.png");
+            images[i].setImage(image);
+            Rectangle2D screen = Screen.getPrimary().getVisualBounds();
+
+            System.out.println(screen.getHeight());
+
+            seatingGrid.getColumnConstraints().set(i%4, columnConstraints);
+            seatingGrid.getRowConstraints().set(i/4, rowConstraints);
+
+            labels[i].setPadding(new Insets(25, 5, 5, 5));
+            labels[i].setText("test");
+            labels[i].setAlignment(Pos.CENTER);
+            labels[i].setTextAlignment(TextAlignment.CENTER);
+
+            seatingGrid.add(labels[i], i%4, i/4);
+            seatingGrid.add(images[i], i%4, i/4);
+
+            System.out.println(seatingGrid.getMinWidth());
+
+            images[i].fitHeightProperty().setValue(seatingGrid.getMinHeight());
+            images[i].fitWidthProperty();
+        }
+
         manageAssets();
+        setInjections();
 
     }
 
@@ -96,16 +92,17 @@ public class SeatingController implements Controller {
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
                     case R:
-                        for(Label label: labelArray) {
+
+                        for(Label label: labels) {
                             label.setText("");
-                            iterator = labelArray.iterator();
-                            currentSeat = 0;
-                            sal.resetCadetList();
-                            cadetsList.getItems().setAll(seatTestService.findAll());
                         }
+
+                        currentSeat = 0;
+                        sal.resetCadetList();
+
                         break;
                     default:
-                        AudioManager.loop("drums", 5);
+                        //AudioManager.loop("drums", 5);
                         System.out.println(event.getCode() + "" + this.getClass().getSimpleName());
                         break;
                 }
@@ -118,7 +115,7 @@ public class SeatingController implements Controller {
                 switch (event.getCode()) {
                     case SPACE:
                         AudioManager.stopAll();
-                        AudioManager.start("tadaaa");
+                        //AudioManager.start("tadaaa");
                         assignSeat();
                         break;
                     default:
@@ -129,58 +126,48 @@ public class SeatingController implements Controller {
         });
     }
 
-    @Override
     public void setInjections() {
 
-        this.sal = new SeatingLogic();
+        this.bootS = (BootcampService)ServiceRegistry.getInstance().getService(BootcampService.class);
 
+        Set<Cadet> bootcampCadets = bootS.getBootcampCadets("Javangers");
+
+        this.sal = new SeatingLogic(bootcampCadets);
+
+        Iterator<Cadet> iterator = bootcampCadets.iterator();
+
+        for(int i = 0; i < bootcampCadets.size(); i++) {
+
+            System.out.println(iterator.next().getName());
+
+        }
 
     }
 
     public void assignSeat() {
 
-        Cadet cadet = sal.assignSeat(currentSeat);
-        if(!iterator.hasNext()) {
+        if(currentSeat == labels.length) {
 
-            iterator = labelArray.iterator();
             currentSeat = 0;
-            cadetsList.getItems().setAll(seatTestService.findAll());
+            sal.resetCadetList();
 
-        } else {
-
-            Label currentLabel = iterator.next();
-            currentLabel.setText(cadet.getName());
-            cadets.remove(cadet);
-            cadetsList.getItems().remove(cadet);
-            currentSeat++;
         }
+
+        System.out.println(currentSeat);
+
+        Cadet cadet = sal.assignSeat(currentSeat);
+
+        System.out.println(cadet);
+        System.out.println(labels[currentSeat]);
+
+        labels[currentSeat].setText(cadet.getName());
+        currentSeat++;
 
     }
 
     public void manageAssets() {
 
-        labelArray = new ArrayList<>();
-
-        labelArray.add(seat1);
-        labelArray.add(seat2);
-        labelArray.add(seat3);
-        labelArray.add(seat4);
-        labelArray.add(seat5);
-        labelArray.add(seat6);
-        labelArray.add(seat7);
-        labelArray.add(seat8);
-        labelArray.add(seat9);
-        labelArray.add(seat10);
-        labelArray.add(seat11);
-        labelArray.add(seat12);
-        labelArray.add(seat13);
-        labelArray.add(seat14);
-        labelArray.add(seat15);
-        labelArray.add(seat16);
-
-        iterator = labelArray.iterator();
-
-        for(Label label: labelArray) {
+        for(Label label: labels) {
             label.setText("");
         }
     }
@@ -189,14 +176,12 @@ public class SeatingController implements Controller {
     void showAdminSettings(MouseEvent event) {
         AudioManager.stopAll();
         Navigator.getInstance().loadScreen("AdminView");
-
     }
 
     @FXML
     void showSeating(ActionEvent event) {
         AudioManager.stopAll();
         Navigator.getInstance().loadScreen("seating");
-
     }
 
     @FXML
@@ -208,21 +193,18 @@ public class SeatingController implements Controller {
     void skipToCredits(ActionEvent event) {
         AudioManager.stopAll();
         Navigator.getInstance().loadScreen("credits");
-
     }
 
     @FXML
     void skipToSeating(ActionEvent event) {
         AudioManager.stopAll();
         Navigator.getInstance().loadScreen("seating");
-
     }
 
     @FXML
     void skipToSummarizer(ActionEvent event) {
         AudioManager.stopAll();
         Navigator.getInstance().loadScreen("summarizer_dum");
-
     }
 
     @FXML

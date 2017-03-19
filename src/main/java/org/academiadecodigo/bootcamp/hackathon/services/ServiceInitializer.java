@@ -22,7 +22,7 @@ public class ServiceInitializer {
         BootcampDao bootcampDAO = new HibernateBootcampDao(manager);
         SummarizerDao summarizerDao = new HibernateSummarizerDao(manager);
 
-        BootcampService bootS = new BootcampService(cadetDAO, summarizerDao, bootcampDAO, manager);
+        BootcampServiceImpl bootS = new BootcampServiceImpl(cadetDAO, summarizerDao, bootcampDAO, manager);
         AdminService adminService = new AdminService(bootcampDAO, manager);
 
         ServiceRegistry.getInstance().registerService(bootS);

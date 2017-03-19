@@ -109,7 +109,7 @@ public class SummarizerController implements Controller {
             public void handle(KeyEvent event) {
                 switch (event.getCode()) {
                     default:
-                        System.out.println(event.getCode() + " tou dentro");
+                        System.out.println(event.getCode() + "" + this.getClass().getSimpleName());
                         break;
                 }
             }
@@ -123,7 +123,7 @@ public class SummarizerController implements Controller {
                         spinWheel();
                         AudioManager.start("twilight");
                     default:
-                        System.out.println(event.getCode() + " tou dentro");
+                        System.out.println(event.getCode() + "" + this.getClass().getSimpleName());
                         break;
                 }
             }
@@ -221,7 +221,6 @@ public class SummarizerController implements Controller {
         };
     }
 
-    @Override
     public void setInjections() {
 
     }

@@ -1,14 +1,14 @@
 package org.academiadecodigo.bootcamp.hackathon.controller;
 
-        import javafx.event.ActionEvent;
-        import javafx.fxml.FXML;
-        import javafx.scene.Scene;
-        import javafx.scene.control.Button;
-        import javafx.scene.control.MenuItem;
-        import javafx.scene.image.ImageView;
-        import javafx.scene.input.MouseEvent;
-        import org.academiadecodigo.bootcamp.hackathon.AudioManager;
-        import org.academiadecodigo.bootcamp.hackathon.navigation.Navigator;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.MenuItem;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import org.academiadecodigo.bootcamp.hackathon.AudioManager;
+import org.academiadecodigo.bootcamp.hackathon.navigation.Navigator;
 
 public class WelcomeController implements Controller{
 
@@ -81,11 +81,6 @@ public class WelcomeController implements Controller{
 
     @Override
     public void addEventHandler(Scene scene) {
-
-    }
-
-    @Override
-    public void setInjections() {
 
     }
 
